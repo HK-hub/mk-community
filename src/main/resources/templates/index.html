@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>码客书屋</title>
+	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
+	<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
+	<!-- JQuery 的引入要在 BootStrap 的JS 之前-->
+	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
+	<script th:src="${'/js/bootstrap.min.js'}" type="application/javascript" href="/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+	<!-- 公共: 导航条 -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">码客书屋</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">码客书屋</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学习
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">博客</a></li>
+							<li><a href="#">文档</a></li>
+							<li><a href="#">视频</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">开源</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">资源</a></li>
+							<li><a href="#">书籍</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="搜索问题或文章">
+					</div>
+					<button type="submit" class="btn btn-default">搜索</button>
+				</form>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">发现<span class="sr-only">(current)</span></a></li>
+					<li><a href="#">下载</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">登录</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							个人 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">消息中心</a></li>
+							<li><a href="#">文章中心</a></li>
+							<li><a href="#">个人中心</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">退出登录</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+</body>
+</html>
