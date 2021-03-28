@@ -16,12 +16,13 @@ import java.io.IOException;
 @Component  //注册组件到容器
 public class GithubProvider {
 
-	private static final String url = "https://github.com/login/oauth/access_token";
+	private static String url = "https://github.com/login/oauth/access_token";
 
+	//需要使用post  方法
 	public String getAccessToken(AccessTokenDTO accessTokenDTO){
 
 		OkHttpClient client = new OkHttpClient();
-		MediaType mediaType = MediaType.get("application/json; charset=utf-8");
+		MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
 		RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(accessTokenDTO));
 		Request request = new Request.Builder()
 				.url(url)
@@ -44,10 +45,11 @@ public class GithubProvider {
 		return null ;
 	}
 
+	//使用Get 方法
 	public GithubUser getUser(String access_token){
 		OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
-				.url("https://github.com/api/v3/use?access_token="+access_token)
+				.url("https://api.github.com/user?access_token=" + access_token)
 				.build();
 
 		try {
