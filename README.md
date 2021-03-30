@@ -7,6 +7,9 @@
 ##      version: 1.0.0
 
 
+
+
+
 ## 获取Github 登录授权
 
 
@@ -27,13 +30,18 @@
 
 
 
-
 # 工具 
+[数据库版本管理工具: flyway ](https://flywaydb.org/documentation/getstarted/firststeps/maven)
+
+[flayway 使用快速入门](https://blog.csdn.net/grant167/article/details/108352620)
+
+
 
 
 # 脚本
 ## 1.sql 脚本
 ```sql
+# 创建User 表
 create table tb_user (
     id integer auto_increment primary key ,
     account_id varchar(52) not null ,
@@ -42,5 +50,29 @@ create table tb_user (
     create_time BIGINT ,
     modified_time BIGINT
 ) ;
+
+#创建 question 表
+create table tb_question
+(
+	id int auto_increment,
+	title varchar(100) not null,
+	description TEXT not null,
+	create_time BIGINT null,
+	modified_time BIGINT null,
+	creator int null,
+	comment_count int default 0 null,
+	view_count int default 0 null,
+	like_count int default 0 null,
+	tags VARCHAR(256) null,
+	constraint tb_question_pk
+		primary key (id)
+)
+comment '问题、文章表单';
+
+
+
+
+
 ```
+
 

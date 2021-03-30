@@ -1,0 +1,29 @@
+/*Body*/
+body{
+    background-color: #efefef;
+
+}
+
+
+
+/*问题编辑栏目： */
+.main{
+    margin: 40px;
+    background-color: rgb(247, 247, 247);
+
+}
+
+
+/*发布按钮： btn-publish*/
+.main .btn-publish{
+    float: right;
+    margin-bottom: 15px;
+}
+
+.main .login-error {
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+
+

@@ -12,8 +12,8 @@ import lombok.Data;
 public class User {
 
 	private Integer id ;
-	private String name ;
 	private String account_id ;
+	private String name ;
 	private String token ;
 	private Long create_time ;
 	private Long modified_time ;

@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 /**
@@ -43,10 +44,10 @@ public class AuthorizeController {
 
 
 	@GetMapping("/callback")
-	@ResponseBody
 	public String callback(@RequestParam(name = "code")String code,
 	                       @RequestParam(name = "state")String state,
-	                       HttpServletRequest request){
+	                       HttpServletRequest request,
+	                       HttpServletResponse response){
 
 		AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
 		//: 重定向回站点, 使用 code 换令牌
@@ -67,7 +68,8 @@ public class AuthorizeController {
 		if (githubUser != null){
 			//登录成功: 将用户存储进入数据库
 			User user = new User();
-			user.setToken(UUID.randomUUID().toString());
+			String user_token =  UUID.randomUUID().toString();
+			user.setToken(user_token);
 			user.setName(githubUser.getName());
 			user.setAccount_id(String.valueOf(githubUser.getId()));
 			user.setCreate_time(System.currentTimeMillis());
@@ -75,9 +77,10 @@ public class AuthorizeController {
 			userMapper.insertUser(user);    //插入用户
 
 			//登录成功 : 写 cookie 和 session
-			request.getSession().setAttribute("user", githubUser);
+			response.addCookie(new Cookie("user_token", user_token));
 			//进行重定向: 请求访问地址改变
-			System.out.println(githubUser.getName());
+			System.out.println("用户名: "+githubUser.getName());
+
 			return "redirect:/" ;
 		}else
 		{
