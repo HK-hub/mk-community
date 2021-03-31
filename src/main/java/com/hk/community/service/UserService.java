@@ -10,14 +10,13 @@ import com.hk.community.model.User;
 public interface UserService {
 
 	//查找
-	public User findUserById();
+	public User findUserById(Integer id);
 	//插入
-	public void insertUser() ;
+	public void insertUser(User user) ;
 	//删除
-	public void deleteUser() ;
+	public void deleteUser(Integer id) ;
 	//更新
-	public void updateUser() ;
-
+	public void updateUser(User user) ;
 
 
 }

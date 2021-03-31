@@ -3,6 +3,9 @@ package com.hk.community.mapper;
 import com.hk.community.model.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @author 31618
@@ -15,6 +18,10 @@ public interface QuestionMapper {
 	@Insert("insert into tb_question (title,description,create_time ,modified_time , creator , comment_count, view_count, like_count , tags)" +
 			"values(#{title},#{description},#{create_time},#{modified_time}, #{creator}, #{comment_count}, #{view_count}, #{like_count},#{tags})")
 	public void insertQuestion(Question question) ;
+
+
+	@Select("select * from tb_question")
+	List<Question> allQuestionList();
 
 
 }

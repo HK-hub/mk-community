@@ -9,7 +9,7 @@
 
 
 
-
+ 
 ## 获取Github 登录授权
 
 
@@ -35,6 +35,7 @@
 
 [flayway 使用快速入门](https://blog.csdn.net/grant167/article/details/108352620)
 
+[lombok 工具](https://projectlombok.org)
 
 
 
@@ -70,7 +71,9 @@ create table tb_question
 comment '问题、文章表单';
 
 
-
+# 为用户添加头像
+alter table tb_user
+	add avatar_url varchar(100) null;
 
 
 ```

@@ -1,6 +1,7 @@
 package com.hk.community.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author 31618
@@ -9,6 +10,7 @@ import lombok.Data;
  */
 
 @Data
+@ToString
 public class User {
 
 	private Integer id ;
@@ -17,4 +19,6 @@ public class User {
 	private String token ;
 	private Long create_time ;
 	private Long modified_time ;
+	private String avatar_url ;  //头像地址
+
 }

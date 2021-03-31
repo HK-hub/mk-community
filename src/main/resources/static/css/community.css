@@ -26,4 +26,32 @@ body{
 }
 
 
+.main .media .media-left .index-user-question-avatar {
+
+    width: 75px;
+    height: 78px;
+
+}
+
+
+
+.main .media .media-body .question-feature-desc span{
+
+    font-size: 12px;
+    font-weight: normal;
+    color: #999
+}
+
+
+
+.main .media .media-body .question-summary{
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+    display: inline-block;
+}
+
+
 

@@ -1,26 +1,27 @@
-package com.hk.community.model;
+package com.hk.community.dto;
 
+import com.hk.community.model.User;
 import lombok.Data;
 import lombok.ToString;
 
 /**
  * @author 31618
  * @description
- * @date 2021-03-29 15:45
+ * @date 2021-03-30 21:47
  */
 @Data
 @ToString
-public class Question {
-
+public class QuestionDTO {
 	private Integer id ;
 	private String title ;
 	private String description ;
 	private Long create_time ;
 	private Long modified_time ;
 	private Integer creator ;
-	private Integer comment_count  = 0;
-	private Integer view_count = 0;
-	private Integer like_count = 0;
-	private String tags = "测试标签";
+	private Integer comment_count ;
+	private Integer view_count ;
+	private Integer like_count;
+	private String tags ;
+	private User user ;
 
 }

@@ -15,13 +15,17 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
 	//插入用户
-	@Insert("insert into tb_user (name , account_id , token , create_time , modified_time ) values(#{name} , #{account_id} , #{token }, #{create_time}, #{modified_time})" )
+	@Insert("insert into tb_user (name , account_id , token , create_time , modified_time , avatar_url ) values(#{name} , #{account_id} , #{token }, #{create_time}, #{modified_time}, #{avatar_url}) " +
+			"where not exists (select account_id from tb_user where account_id = #{account_id})" )
 	public void insertUser(User user);
 
 
 	//查找用户: 通过 token
 	@Select("select * from tb_user where token=#{token}")
 	public User findByToken(@Param("token") String token) ;
+
+	@Select("select * from tb_user where id=#{id}")
+	User findById(@Param("id") int id);
 
 
 }
