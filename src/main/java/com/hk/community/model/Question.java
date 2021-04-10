@@ -1,5 +1,8 @@
 package com.hk.community.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.ToString;
 
@@ -10,17 +13,19 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@TableName(value = "tb_question")
 public class Question {
 
+	@TableId(value = "id" , type = IdType.AUTO)
 	private Integer id ;
 	private String title ;
 	private String description ;
 	private Long create_time ;
 	private Long modified_time ;
 	private Integer creator ;
-	private Integer comment_count  = 0;
-	private Integer view_count = 0;
-	private Integer like_count = 0;
+	private Integer comment_count  ;
+	private Integer view_count ;
+	private Integer like_count ;
 	private String tags = "测试标签";
 
 }

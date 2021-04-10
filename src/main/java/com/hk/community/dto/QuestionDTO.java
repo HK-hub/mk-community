@@ -24,4 +24,5 @@ public class QuestionDTO {
 	private String tags ;
 	private User user ;
 
+
 }

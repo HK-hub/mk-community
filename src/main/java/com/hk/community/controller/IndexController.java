@@ -1,17 +1,17 @@
 package com.hk.community.controller;
 
-import com.hk.community.dto.QuestionDTO;
-import com.hk.community.mapper.UserMapper;
+import com.hk.community.dto.PaginationDTO;
 import com.hk.community.model.User;
-import com.hk.community.service.serviceImp.QuestionService;
+import com.hk.community.service.serviceImp.QuestionServiceImp;
+import com.hk.community.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @author 31618
@@ -21,19 +21,17 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-	@Autowired  //注入 UserMapper .来进行访问User数据库
-	private UserMapper userMapper ;
-
-//	@Autowired
-//	private QuestionMapper questionMapper ;
-
 	@Autowired
-	private QuestionService questionService ;
+	private QuestionServiceImp questionService ;
+	@Autowired
+	private UserServiceImp userService ;
+
 
 
 	@RequestMapping("/")    //GetMapping
 	public String index(HttpServletRequest request ,
-	                    Model model){
+	                    Model model ,
+	                    @RequestParam(name = "pageIndex" ,defaultValue = "1") int pageIndex){
 
 		String token = null;
 
@@ -47,19 +45,18 @@ public class IndexController {
 				}
 			}
 		}
-
-
+		//根据Token 获取 User对象
 		if (token != null){
-			final User user = userMapper.findByToken(token);
+			User user = userService.findUserByToken(token);
 			if (user != null){
 				request.getSession().setAttribute("user",user);
 			}
 		}
 
-
 		//查询所有文章
-		List<QuestionDTO> questionList = questionService.allQuestionList();
-		model.addAttribute("allQuestionList" , questionList) ;
+		//分页查询文章: pageIndex
+		PaginationDTO selectQuestionPage = questionService.selectQuestionPage(pageIndex);
+		model.addAttribute("questionPage" , selectQuestionPage) ;
 
 		return "index" ;
 	}

@@ -1,0 +1,82 @@
+.ucenter {
+    margin-top: 45px;
+}
+
+.panel-default>.paner-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+.paner-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.panel-bodey {
+    padding: 15px;
+}
+
+.ucenter .ucenter-avatar {
+    text-align: center;
+}
+
+.ucenter .ucenter-avatar .thumbnail {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.ucenter .btns {
+    margin: 15px auto;
+}
+
+.ucenter .btns .btn {
+    margin-bottom: 15px;
+}
+
+.ucenter .user-stat li,
+.ucenter .user-stat ul {
+    padding: 0;
+    list-style: none;
+    color: #888888;
+}
+
+.ucenter .user-stat li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #EFEFEF;
+}
+
+.ucenter .user-stat span {
+    color: #f44336;
+}
+
+.ucenter .user-stat span:first-child {
+    display: inline-block;
+    width: 70px;
+    color: #666;
+}
+
+.nav-tabs>.action {
+    border: 1px solid #ddd;
+    border-bottom: transparent;
+}
+
+
+/* .nav-tabs>.action>a {
+    float: left;
+} */
+
+
+/* .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+} */
+
+.ucenter .ucenter-content {
+    min-height: 150px;
+}

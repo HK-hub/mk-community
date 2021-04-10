@@ -1,5 +1,8 @@
 package com.hk.community.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,14 +14,21 @@ import lombok.ToString;
 
 @Data
 @ToString
+@TableName("tb_user")
 public class User {
 
+	@TableId(value = "id" , type = IdType.AUTO)     //设置主键自增
 	private Integer id ;
 	private String account_id ;
+	private String password ;
+	private String email ;
 	private String name ;
 	private String token ;
 	private Long create_time ;
 	private Long modified_time ;
-	private String avatar_url ;  //头像地址
+	//头像地址
+	private String avatar_url ;
+	private String bio = "a plain coder";
+
 
 }

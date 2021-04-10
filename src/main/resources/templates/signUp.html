@@ -1,0 +1,84 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<title>码客社区--注册</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		content="Working Signin form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<!-- //Meta tag Keywords -->
+	<link href="//fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+	<!--/Style-CSS -->
+	<link rel="stylesheet" href="/css/myCSS/signUp.css" type="text/css" media="all" />
+	<!--//Style-CSS -->
+</head>
+
+<body>
+
+	 <!-- form section start -->
+	 <section class="w3l-workinghny-form">
+        <!-- /form -->
+        <div class="workinghny-form-grid">
+            <div class="wrapper">
+                <div class="logo">
+                    <h1><a class="brand-logo" href="index.html"><span>码客社区</span> 期待您 到来</a></h1>
+                    <!-- if logo is image enable this   
+                        <a class="brand-logo" href="#index.html">
+                            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                        </a> -->
+                </div>
+                <div class="workinghny-block-grid">
+                    <div class="workinghny-left-img align-end">
+                        <img src="img/signUpImg/2.png" class="img-responsive" alt="img" />
+                    </div>
+                    <div class="form-right-inf">
+						
+                        <div class="login-form-content">
+                            <h2>Where to?</h2>
+                            <form action="/user-register"  class="signin-form" method="post">
+								<div class="one-frm">
+									<label>Name</label>
+									<input type="text" name="Name"  placeholder="取个昵称吧" required="">
+								</div>
+								<div class="one-frm">
+									<label>Email</label>
+									<input type="email" name="Email"  placeholder="输入邮箱哦" required="">
+								</div>
+								<div class="one-frm">
+									<label>Password</label>
+									<input type="password" name="Password"  placeholder="设置密码了" required="">
+								</div>
+                                <label class="check-remaind">
+                                    <input type="checkbox"><span class="checkmark"></span>
+                                    <p class="remember">Remember Me</p>
+                                </label>
+                                <button class="btn btn-style mt-3" type="submit"> Sign Up </button>
+                                <p class="already">Already have an account? <a href="/login">Sign In</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //form -->
+        <!-- copyright-->
+        <div class="copyright text-center">
+            <div class="wrapper">
+                <p class="copy-footer-29">© 2020 CoderCommunity Sign In. All rights reserved | Design by <a
+                        href="/" th:href="@{/}">码客社区CC</a></p>
+            </div>
+        </div>
+        <!-- //copyright-->
+    </section>
+    <!-- //form section start -->
+
+</body>
+
+</html>

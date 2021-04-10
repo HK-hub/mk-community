@@ -21,74 +21,8 @@
 
 <body>
 	<!-- 公共: 导航条 -->
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">码客书屋</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">码客书屋</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学习
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">博客</a></li>
-							<li><a href="#">文档</a></li>
-							<li><a href="#">视频</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">开源</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">资源</a></li>
-							<li><a href="#">书籍</a></li>
-						</ul>
-					</li>
-				</ul>
-				<form class="navbar-form navbar-left">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="搜索问题或文章">
-					</div>
-					<button type="submit" class="btn btn-default">搜索</button>
-				</form>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">发现<span class="sr-only">(current)</span></a></li>
-					<li><a href="#">下载</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<!-- 发起问题 -->
-					<li th:if="${session.user}!=null"><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</a></li>
-					<!-- 填写: 请求用户的Github 身份  -->
-					<!-- 用户登录: 显示个人下拉菜单 -->
-					<li class="dropdown" th:if="${session.user} != null">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="'你好,'+${session.user.getName()}">
-							个人 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">消息中心</a></li>
-							<li><a href="#">文章中心</a></li>
-							<li><a href="#">个人中心</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">退出登录</a></li>
-						</ul>
-					</li>
-					<!-- 用户未登录显示登录 按钮-->
-					<li th:if="${session.user} == null">
-						<a href="https://github.com/login/oauth/authorize?client_id=ac68d213e55794a1f617&redirect_uri=http://localhost:8087/callback&state=1">
-							登录</a>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<!-- 公共: 导航条 -->
+	<div th:insert="~{navigation :: header-nav}"></div>
 
 	<!-- 发布框， 发布MD 编辑器-->
 	<div class="container-fluid main">
@@ -116,7 +50,7 @@
 					</div>
 					<button type="submit" class="btn btn-success btn-publish">&nbsp;发&nbsp;布&nbsp;</button>
 
-					<div class="alert alert-warning alert-dismissible login-error" role="alert" th:if="${user_login_err} == null">
+					<div class="alert alert-warning alert-dismissible login-error" role="alert" th:if="${user_login_err} != null">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<strong>Error ！</strong> 您目前还未登录, 请进行登录后进行文章创作哦!.
 					</div>

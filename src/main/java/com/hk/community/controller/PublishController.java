@@ -3,6 +3,7 @@ package com.hk.community.controller;
 import com.hk.community.mapper.QuestionMapper;
 import com.hk.community.model.Question;
 import com.hk.community.model.User;
+import com.hk.community.service.serviceImp.QuestionServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +23,16 @@ import javax.servlet.http.HttpServletRequest;
 public class PublishController {
 
 	@Autowired
-	private QuestionMapper questionMapper ;
+	private QuestionServiceImp questionServiceImp ;
 
+	@Autowired
+	private QuestionMapper questionMapper ;
 
 	@RequestMapping("/publish")
 	public String publish(){
 
-		return "publish" ;
+		return "edit" ;
+		//return "publish" ;
 	}
 
 	@PostMapping("/publish/save_question")
@@ -51,9 +55,12 @@ public class PublishController {
 			model.addAttribute("user_login_err", "错误: 用户未登录") ;
 			return "publish" ;
 		}
-		question.setCreator(user.getId());
-		//插入数据
-		questionMapper.insertQuestion(question);
+		else{
+			question.setCreator(user.getId());
+			//插入数据
+			//questionServiceImp.save(question) ;
+			questionMapper.insertQuestion(question);
+		}
 
 		return "redirect:/" ;
 	}

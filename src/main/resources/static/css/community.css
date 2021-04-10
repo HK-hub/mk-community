@@ -4,6 +4,48 @@ body{
 
 }
 
+/* 顶部导航条 */
+.navbar {
+    margin-bottom: 3px;
+}
+
+/* 顶部通知栏 */
+.announcement-banner {
+    background: #3b4045 !important;
+    color: #c9cccf;
+    padding: 5px;
+}
+
+.announcement-banner a {
+    color: #ffffff;
+}
+
+.announcement-banner .contributor {
+    float: right;
+    font-size: 10px;
+    color: cornsilk;
+}
+
+.svg-icon {
+    fill: #ffffff !important;
+}
+
+.announcement-content {
+    overflow: hidden;
+    word-wrap: normal;
+    word-break: keep-all;
+}
+
+.announcement-content ::before {
+    content: "";
+    display: block;
+}
+
+.announcement-content ::after {
+    content: "";
+    display: block;
+}
+
 
 
 /*问题编辑栏目： */
@@ -25,16 +67,30 @@ body{
     margin-bottom: 20px;
 }
 
-
+/* 发布人头像  */
 .main .media .media-left .index-user-question-avatar {
 
-    width: 75px;
-    height: 78px;
+    width: 70px;
+    height: 70px;
 
 }
 
+/* 文章标签: tags*/
+.main .media .media-body .question-feature-desc .tags{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
 
 
+/* 问题特征描述： 标签， 浏览， 阅读， 点赞 */
 .main .media .media-body .question-feature-desc span{
 
     font-size: 12px;
@@ -43,7 +99,7 @@ body{
 }
 
 
-
+/* 文章、问题概要 */
 .main .media .media-body .question-summary{
 
     overflow: hidden;
@@ -51,7 +107,137 @@ body{
     -o-text-overflow: ellipsis;
     white-space:nowrap;
     display: inline-block;
+
 }
+
+
+/* 代码code 类*/
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;;
+}
+
+
+/* 分页导航条：首页文章分页导航条 */
+.main .paging-navigation{
+
+    float: right;
+
+}
+
+
+/* 引入的第三方分页 */
+.self-pagination-nav{
+    float: right;
+    margin-bottom: 15px;
+}
+.self-pagination-ul{
+    height:100%;
+    list-style-type:none;
+}
+.self-pagination-ul li{
+    line-height:40px;
+    float:left;
+}
+.page_btn{
+    border-radius:4px;
+    border:1px solid #e5e9ef;
+    background:#fff;
+    margin-right:10px;
+    text-align:center;
+    width:38px;
+    height:38px;
+    line-height: 8px;
+    margin-top:6px;
+    outline:0;
+    color: #333333;
+}
+.page_btn:hover{
+    border:1px solid #4f90fb;
+    color:#4f90fb;
+}
+.page_btn:active{
+    background-color:#4f90fb;
+    border:1px solid #ddd;
+    color: #fff;
+}
+span.pages_span{
+    margin-right:10px;
+    width:38px;
+    height:38px;
+    position:relative;
+    top:10px;
+}
+
+
+
+
+/* Logo ： 网站logo */
+
+.logo-CoderCommunity{
+    width: 80px;
+    height: 40px;
+    margin-top:5px;
+}
+
+/* 用户头像 */
+#user-avatar{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.user-info{
+    border: 0;
+    padding: 6px 10px !important;
+    cursor: pointer;
+}
+
+.userbar-content {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+
+
+/* 尾部栏 */
+
+.footer-wra {
+    color: #999;
+}
+
+.footer-info {
+    padding: 30px 0 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.footer-info a {
+    color: #66b7ff;
+}
+
+.footer-info p {
+    margin: 0 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

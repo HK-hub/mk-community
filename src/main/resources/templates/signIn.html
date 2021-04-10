@@ -1,0 +1,87 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <title>码客社区--登录</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="css/myCSS/signIn.css" type="text/css" media="all" />
+    <!-- fontawesome v5-->
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="signinform">
+        <h1>Sign In Coder Community</h1>
+        <!-- container -->
+        <div class="container">
+            <!-- main content -->
+            <div class="w3l-form-info">
+                <div class="w3l_form">
+                    <div class="left_grid_info">
+                        <img src="img/signInImg/image.svg" alt="" />
+                    </div>
+                </div>
+                <div class="w3_info">
+                    <h2>Sign In</h2>
+                    <form action="/userLogin"  method="post">
+                        <div class="input-group">
+                            <span><i class="fas fa-user" aria-hidden="true"></i></span>
+                            <input type="email" placeholder="Email or Username" required="" name="userAccount">
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fas fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" placeholder="Password" required="" name="password">
+                        </div>
+                        <div class="form-row bottom">
+                            <div class="form-check">
+                                <input type="checkbox" id="remenber" name="remenber" value="remenber">
+                                <label for="remenber"> Remember me?</label>
+                            </div>
+                            <a href="#url" class="forgot">Forgot password?</a>
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+                    </form>
+                    <p class="continue"><span>or Sign in with</span></p>
+                    <div class="social-login">
+                        <a href="https://github.com/login/oauth/authorize?client_id=ac68d213e55794a1f617&redirect_uri=http://localhost:8087/callback&state=1">
+                            <div class="facebook">
+                                <span class="fab fa-github" aria-hidden="true"></span> Github登录
+                            </div>
+                        </a>
+                        <a href="#google">
+                            <div class="google">
+                                <span class="fab fa-qq" aria-hidden="true"></span> QQ登录
+                            </div>
+                        </a>
+                    </div>
+                    <p class="account">Don't have an account? <a href="/register" th:href="@{/register}">Sign up</a></p>
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- //container -->
+        <!-- footer -->
+        <div class="footer">
+            <p>&copy; 2020 Play Sign In form. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="blank"
+                th:href="@{/}">Coder Community</a></p>
+        </div>
+        <!-- footer -->
+    </div>
+</body>
+
+</html>

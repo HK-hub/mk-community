@@ -29,6 +29,9 @@ public class AuthorizeController {
 	@Autowired
 	private HttpHelper httpHelper;
 
+	@Autowired  //自动注入
+	UserMapper userMapper;
+
 	@Autowired
 	private GithubProvider githubProvider ;
 	//属性注入
@@ -39,8 +42,7 @@ public class AuthorizeController {
 	@Value("${github.redirect.uri}")
 	private String redirectURL ;
 
-	@Autowired  //自动注入
-	UserMapper userMapper;
+
 
 
 	@GetMapping("/callback")
@@ -77,13 +79,13 @@ public class AuthorizeController {
 			//设置用户头像
 			user.setAvatar_url(githubUser.getAvatarUrl());
 			//插入用户
+			user.setEmail(githubUser.getEmail());
+			user.setPassword("mk520cc");
 			userMapper.insertUser(user);
-
 			//登录成功 : 写 cookie 和 session
 			response.addCookie(new Cookie("user_token", user_token));
 			//进行重定向: 请求访问地址改变
 			System.out.println("用户名: "+githubUser.getName());
-
 			return "redirect:/" ;
 		}else
 		{
@@ -93,41 +95,5 @@ public class AuthorizeController {
 		}
 	}
 
-
-
-
-
-
-
-
-	//	@GetMapping("/callback")
-//	@ResponseBody
-//	public String callback(@RequestParam(name = "code")String code,
-//	                        @RequestParam(name = "state")String state,
-//	                        HttpServletRequest request){
-//
-//		//获取 JSON
-//		Map<String,Object> map = new HashMap<>();
-//		map.put("client_id",clientId);
-//		map.put("client_secret",clientSecret);
-//		map.put("code",code);
-//		map.put("redirect_url",redirectURL);
-//		map.put("state", state);
-//		//获取access token
-//		String url = "https://github.com/login/oauth/access_token";
-//		String json = JSON.toJSONString(map);
-//		//2.根据传入的参数（包含code），post请求https://github.com/login/oauth/access_token，获取返回值
-//		String result = httpHelper.Post(url, json);//access_token=your_client_id&scope=user&token_type=bearer
-//		System.out.println("callback result:" + result);
-//
-//		String[] strs = result.split("&");
-//		String access_token = strs[0].split("=")[1];//解析access_token
-//
-//		String url_user = "https://api.github.com/user?access_token=" + access_token;
-//		String userInfo = httpHelper.Get(url_user);
-//		System.out.println("userInfo:" + userInfo);//返回的是一个json字符串
-//
-//		return userInfo ;
-//	}
 
 }

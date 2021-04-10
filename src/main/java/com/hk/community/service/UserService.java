@@ -1,5 +1,6 @@
 package com.hk.community.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.hk.community.model.User;
 
 /**
@@ -7,16 +8,9 @@ import com.hk.community.model.User;
  * @description : 用户service 服务
  * @date 2021-03-30 8:47
  */
-public interface UserService {
+public interface UserService extends IService<User> {
 
-	//查找
-	public User findUserById(Integer id);
-	//插入
-	public void insertUser(User user) ;
-	//删除
-	public void deleteUser(Integer id) ;
-	//更新
-	public void updateUser(User user) ;
+
 
 
 }

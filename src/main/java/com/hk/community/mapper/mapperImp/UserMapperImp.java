@@ -6,17 +6,9 @@ package com.hk.community.mapper.mapperImp;
  * @date 2021-03-30 9:08
  */
 //@Mapper
-public class UserMapperImp  { //implements UserMapper
+public class UserMapperImp  {
 
-//	@Override
-//	@Insert("")
-//	public void insertUser(User user) {
-//
-//	}
-//
-//	@Override
-//	@Select("")
-//	public User findByToken(String token) {
-//		return null;
-//	}
+
+
+
 }
