@@ -13,6 +13,12 @@
 ## 获取Github 登录授权
 
 
+## markdown 编辑器
+![](https://img-blog.csdnimg.cn/20210115143745187.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDM1MzUwNw==,size_16,color_FFFFFF,t_70)
+
+
+
+
 ## 数据库设计理念:
 一、文章表：post，字段如下：id【唯一标识】，aid【作者id】，title【标题】,content【内容】，cid【分类id】二、分类表，category，字段如下：id【唯一标识，与post表的cid关联】,name【分类名】三、标签表，tag，字段如下：id【唯一标识】，name【标签名】四、标签与文章对应关系表，tag_relationship，字段如下：id【唯一标识】，postid【文章id，与post表的id关联】，tagid【标签id，tag表的id关联】
 有朋友可能会问：为什么要单独用一个表来存储文章与标签的对应关系，为什么不可以直接在tag表中增加一个文章id字段呢，比如：tag表：id，postid，name这样做的话，并不是不可以，

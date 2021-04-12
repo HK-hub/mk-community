@@ -9,6 +9,11 @@ body{
     margin-bottom: 3px;
 }
 
+/* 发布图标 */
+.create-img{
+    width: 16px;
+    height: 16px;
+}
 /* 顶部通知栏 */
 .announcement-banner {
     background: #3b4045 !important;

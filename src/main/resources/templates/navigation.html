@@ -35,7 +35,6 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="#">资源</a></li>
 								<li><a href="#">工具</a></li>
-
 							</ul>
 						</li>
 					</ul>
@@ -72,7 +71,24 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<!-- 发起问题 -->
-						<li th:if="${session.user}!=null"><a href="/publish"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</a></li>
+
+						<li class="dropdown" th:if="${session.user}!=null">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-lightbulb-o"></i>&nbsp;创造
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/createArticle">博客</a></li>
+								<li><a href="/publish">问题</a></li>
+								<li><a href="#">视频</a></li>
+								<li><a href="#">书籍</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">项目</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">资源</a></li>
+								<li><a href="#">工具</a></li>
+							</ul>
+						</li>
 
 						<!-- 填写: 请求用户的Github 身份  -->
 						<!-- 用户登录: 显示个人下拉菜单 -->

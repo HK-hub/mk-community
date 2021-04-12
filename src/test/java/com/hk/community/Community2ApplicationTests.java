@@ -18,7 +18,7 @@ class Community2ApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println("---------------"+questionService.list());
+
 //		Page<Question> questionPage = questionService.page(new Page<Question>());
 //		System.out.println(questionPage.getTotal());
 		System.out.println(System.currentTimeMillis());

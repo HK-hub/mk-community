@@ -28,10 +28,11 @@
 
 	<!-- 公共: 导航条 -->
 	<div th:insert="~{navigation :: header-nav}"></div>
+	<input type="text" id="title-input" class="form-control" placeholder="输入文章标题...">
 	<!-- Indicates a successful or positive action -->
 	<button type="button" id="save-post-btn" class="btn btn-success">发布文章</button>
 	<!-- Contextual button for informational alert messages -->
-	<button type="button" class="btn btn-info">保存草稿</button>
+	<button type="button" id="save-draft-btn" class="btn btn-info">保存草稿</button>
 	<div id="vditor" class="vditor"></div>
 	<script src="./js/community-js/vditor.js"></script>
 

@@ -31,8 +31,7 @@ public class PublishController {
 	@RequestMapping("/publish")
 	public String publish(){
 
-		return "edit" ;
-		//return "publish" ;
+		return "publish" ;
 	}
 
 	@PostMapping("/publish/save_question")

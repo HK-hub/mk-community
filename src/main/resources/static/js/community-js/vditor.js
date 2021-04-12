@@ -16,10 +16,70 @@ const vditor = new Vditor('vditor', {
         "paragraphBeginningSpace": true,
 
     },
+    //自定义工具栏
+    toolbar: [
+        "emoji",
+        "headings",
+        "bold",
+        "italic",
+        "strike",
+        "link",
+        "|",
+        "list",
+        "ordered-list",
+        "check",
+        "outdent",
+        "indent",
+        "|",
+        "quote",
+        "line",
+        "code",
+        "inline-code",
+        "insert-before",
+        "insert-after",
+        "|",
+        "upload",
+        "record",
+        "table",
+        "|",
+        "undo",
+        "redo",
+        "|",
+        "fullscreen",
+        "edit-mode",
+        {
+            name: "more",
+            toolbar: [
+                "both",
+                "code-theme",
+                "content-theme",
+                "export",
+                "outline",
+                "preview",
+                "devtools",
+                "info",
+                "help",
+            ],
+        },
+        ,"|",
+        "preview",
+        {
+            hotkey: "⌘-S",
+            name: "save",
+            tipPosition: "s",
+            tip: "保存",
+            className: "right",
+            icon: `<img style="height: 16px" src='https://img.58cdn.com.cn/escstatic/docs/imgUpload/idocs/save.svg'/>`,
+            click() {
+                this.saveDoc();
+            }
+        },
+    ],
+
 
     // 缓存
     "cache": {
-        "enable": true //是否使用 localStorage 进行缓存
+        "enable": false //是否使用 localStorage 进行缓存
     },
     "tab": "\t",
     // 预览：
@@ -60,16 +120,113 @@ const vditor = new Vditor('vditor', {
 
     // 文件上传
     upload: {
-        accept: 'image/*,.mp3, .wav, .rar',
+        accept: 'image/*,.mp3, .wav, .rar',     //接受文件类型
+        multiple: true ,    // 允许多文件上传
+        max: 200 * 1024 * 1024,//上传图片的大小
+        fieldName: 'file',
         token: 'test',
-        url: '/api/upload/editor',
-        linkToImgUrl: '/api/upload/fetch',
+        url: '/file/upload',      //请求的接口
+        linkToImgUrl: '/file/upload',
 
+        //文件名称处理
         filename(name) {
             return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
             replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
             replace('/\\s/g', '')
         },
+
+        //图片上传处理
+        handler(files) {
+            function callback(path) {
+                let name = files[0] && files[0].name;
+                let succFileText = "";
+                if (vditor && vditor.vditor.currentMode === "ir") {
+                    succFileText += `\n <img alt=${name} src="${path}">`;
+                } else {
+                    succFileText += `  \n![${name}](${path})`;
+                }
+                document.execCommand("insertHTML", false, succFileText);
+            }
+            //this.handleImageUpload(files, callback);
+            //this.handleImageUpload()
+
+        },
+        //图片链接处理
+        url(files, callback) {
+            this.handleImageUpload(files, callback);
+        },
+
+        //粘贴图片回显处理，如果有图片加了防盗链，则让后台代理替换成自己的图片
+        linkToImgFormat(files) {
+            let code = 0
+            let msg = ''
+            let data = JSON.parse(files)
+            // let linkImgName = data.result.path
+            // //上传图片请求状态
+            if(data.ret_code == 200) {
+                // let lastTipNum = linkImgName.substr(linkImgName.lastIndexOf('/', linkImgName.lastIndexOf('/') - 1) + 1);
+                // let index = lastTipNum.lastIndexOf("\/");
+                // let imgUrl = decodeURI(lastTipNum.substring(index + 1, lastTipNum.length));
+                let responseData = self.gb.imgOutLinkPath(data.result.path)
+                let succUrl = {}
+                let originalURL = 'originalURL'
+                let url = 'url'
+                succUrl[originalURL] = data.result.originalURL
+                succUrl[url] = responseData
+                let end = JSON.stringify({
+                    msg,
+                    code,
+                    data: succUrl
+                })
+                return end
+            } else {
+                self.$message({
+                    message: '图片上传失败！',
+                    type: 'error'
+                })
+            }
+        },
+
+        //上传图片回显处理
+        format(files, responseText){
+            // let imageResult = JSON.parse(responseText)
+            let code = JSON.parse(responseText)
+            let msg = JSON.parse(responseText)
+            let data = JSON.parse(responseText)
+            let filName = data.result.cover_files ;
+
+            //上传图片请求状态
+            if(data.ret_code == 200) {
+                let lastTipNum = filName.substr(filName.lastIndexOf('/', filName.lastIndexOf('/') - 1) + 1);
+                let index = lastTipNum.lastIndexOf("\/");
+                self.imgNameStr = decodeURI(lastTipNum.substring(index + 1, lastTipNum.length));
+                let responseData = self.gb.imgPath(data.result.cover_files)
+                let succ = {}
+                succ[self.imgNameStr] = responseData
+                //图片回显
+                return JSON.stringify({
+                    msg,
+                    code,
+                    data:{
+                        errFiles: [],
+                        succMap: succ
+                        // succMap: {
+                        //   'default.png': `${responseData}`
+                        // }
+                    }
+                })
+            } else {
+                self.$message({
+                    message: '图片上传失败！',
+                    type: 'error'
+                })
+            }
+
+        },
+        error(msg) {
+            console.log(msg+"上传失败了")
+        },
+
 
     },
 
@@ -137,10 +294,6 @@ const vditor = new Vditor('vditor', {
             "grey_question": "❔",
             "grimacing": "😬",
             "grin": "😁",
-            "haircut": "💇",
-            "haircut_man": "💇‍♂",
-            "haircut_woman": "💇",
-            "haiti": "🇭🇹",
             "hamburger": "🍔",
             "hammer": "🔨",
             "hammer_and_pick": "⚒",
@@ -183,7 +336,6 @@ const vditor = new Vditor('vditor', {
             "house": "🏠",
             "house_with_garden": "🏡",
             "houses": "🏘",
-            "huaji": "${emojiSite}/huaji.gif",
             "hugs": "🤗",
             "hungary": "🇭🇺",
             "hushed": "😯",
@@ -234,7 +386,6 @@ const vditor = new Vditor('vditor', {
             "kiwi_fruit": "🥝",
             "last_quarter_moon_with_face": "🌜",
             "latin_cross": "✝️",
-            "latke": "${emojiSite}/latke.png",
             "latvia": "🇱🇻",
             "laughing": "😆",
             "leaves": "🍃",
@@ -265,36 +416,81 @@ const vditor = new Vditor('vditor', {
 })
 
 /* 前端传送markdown 数据到后台 */
-// const btn = document.getElementById('save-post-btn');
-// btn.addEventListener('click', function() {
-//     //获取Markdown ,
-//     var Markdown = vditor.getValue();
-//     console.log(Markdown) ;
-// })
+// 保存草稿
+$("#save-draft-btn").click(function() {
 
-
-$("#save-post-btn").click(function() {
-    let article = vditor.getValue();
+    //let content = vditor.getValue(); 获取markdown 内容
+    let content = vditor.getHTML();
+    var title = $('#title-input').val();
     $.ajax({
-        url : "user/saveArticle",
+        url : "user/addDraft",
         type : "POST",
         data : {
-            "article" : article ,
+            "title" : title ,
+            "content" : content ,
+            "status" : "draft" ,
         },
         dataType : "json",//后台返回来的数据类型
-        // ContentType: "application/json;charset=UTF-8",
+        ContentType: "application/json;charset=UTF-8",
         success : function(data) {
             //后台返回数据
             if (data.status == "save success") {
-                alert(data.message);
-                window.location.href = "index.html";
+                alert("文章草稿保存成功");
             }
         },
-        error:function (errorThrown) {
-            alert("文章保存失败");
-        }
+    });
+})
+
+// 保存、发布文章
+$("#save-post-btn").click(function() {
+    let content = vditor.getHTML();
+    var title = $('#title-input').val();
+    $.ajax({
+        url : "user/addArticle",
+        type : "POST",
+        data : {
+            "title" : title ,
+            "content" : content ,
+            "status" : "publish" ,
+        },
+        dataType : "json",//后台返回来的数据类型
+        ContentType: "application/json;charset=UTF-8",
+        success : function(data) {
+            //后台返回数据
+            if (data.status == "save success") {
+                alert("文章保存成功");
+                window.location.href = "/";
+            }else if (data.status == "save failed"){
+                alert("保存失败");
+            }
+        },
     });
 })
 //还可以写一些正则
 //接下来是信息交互ajax
+
+
+
+// 图片上传业务处理
+//此接口里面调用的是本身的图片上传 业务方自行实现
+// handleImageUpload = (file, callback) => {
+//     const reader = new FileReader();
+//     let formdata = new FormData();
+//     formdata.append("files", file[0]);
+//     reader.onload = () => {
+//         // setTimeout 模拟异步上传图片
+//         // 当异步上传获取图片地址后，执行callback回调（参数为imageUrl字符串），便可将图片地址写入markdown
+//         new Promise(resolve => {
+//             this.props.dispatch({
+//                 type: "docManager/imageUpload",
+//                 payload: { resolve, username: myInfo.userId, formdata }
+//             });
+//         }).then(res => {
+//             let imgurl = res.result.path;
+//             callback(imgurl);
+//         });
+//     };
+//     reader.readAsDataURL(file[0]);
+// };
+
 
