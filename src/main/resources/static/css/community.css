@@ -9,6 +9,12 @@ body{
     margin-bottom: 3px;
 }
 
+/* 导航探索栏目*/
+#index-explore li{
+    list-style: none;
+    float: left;
+}
+
 /* 发布图标 */
 .create-img{
     width: 16px;
@@ -139,6 +145,8 @@ code {
 .self-pagination-nav{
     float: right;
     margin-bottom: 15px;
+    margin-top: 27px;
+    width: 82%;
 }
 .self-pagination-ul{
     height:100%;
@@ -235,6 +243,14 @@ span.pages_span{
 
 
 
+/* 新首页文章内容限制显示*/
+.posts-content-p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 
 
 

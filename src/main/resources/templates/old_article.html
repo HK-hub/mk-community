@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${article.title}">Coder Community</title>
+	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
+	<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
+	<!-- 引入自定义 CSS 样式-->
+	<link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
+	<script src="../static/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}"></script>
+	<link rel="stylesheet" href="../static/mdeditor/css/editormd.css" th:href="${'/mdeditor/css/editormd.css'}">
+	<link rel="stylesheet" href="../static/mdeditor/css/editormd.preview.css" th:href="${'/mdeditor/css/editormd.preview.css'}">
+	<link rel="stylesheet" href="../static/css/myCSS/article.css" th:href="${'/css/myCSS/article.css'}">
+	<!-- 评论系统-->
+	<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+
+<body style="background-image: url('/img/bkg_article.jpg')">
+	<!-- 公共: 导航条 -->
+	<div th:insert="~{navigation :: header-nav}"></div>
+	<div class="article-details">
+		<!-- 用户栏目-->
+		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" id="user-div">
+
+		</div>
+		<div>
+			<!--文章主体内容-->
+			<div id="doc-content" class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+				<textarea style="display:none;" placeholder="markdown" th:text="${article.content}"></textarea>
+
+			</div>
+			<hr>
+			<!-- 评论系统： -->
+			<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" id="vcomments"></div>
+		</div>
+		<!--标签栏目 -->
+		<div id="tag-div" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+			<h3>热门话题</h3>
+			<ul>
+				<li>Java Web 知识点总结</li>
+				<li>Elastic Search 问题报错</li>
+				<li>Spring Boot 版本总裁机制的坑</li>
+				<li>Spring Boot 版本总裁机制的坑</li>
+				<li>Github Oauth 使用token置换用户信息的一个要点</li>
+				<li>•••</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+
+
+
+	<!--  解析文章： -->
+	<script th:src="@{/mdeditor/lib/jquery-3.5.1.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/marked.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/prettify.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/raphael.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/underscore.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/sequence-diagram.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/flowchart.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/jquery.flowchart.min.js}"></script>
+	<script th:src="@{/mdeditor/lib/editormd.min.js}"></script>
+	<script type="text/javascript">
+        var testEditor;
+        $(function () {
+            testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tocm: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true ,
+                theme : "dark",
+                previewTheme : "dark",
+            });
+        });
+	</script>
+
+	<!-- 评论系统： -->
+	<script>
+		new Valine({
+			el: '#vcomments',
+			appId: 'zb1717nlMvXfvuxvBen0hWHT-gzGzoHsz',
+			appKey: 'gNubzg6p4i991tqHNsg5BQlt'
+		})
+	</script>
+
+
+</body>
+</html>
+
+

@@ -24,11 +24,11 @@
 								<i class="fa fa-graduation-cap" ></i>&nbsp;学习
 								<span class="caret"></span>
 							</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" id="">
 								<li><a href="#">博客</a></li>
 								<li><a href="#">文档</a></li>
-								<li><a href="#">视频</a></li>
-								<li><a href="#">书籍</a></li>
+								<li><a href="/learnInfo">视频</a></li>
+								<li><a href="/learnInfo">书籍</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">开源</a></li>
 								<li><a href="#">项目</a></li>
@@ -45,7 +45,7 @@
 						<button type="submit" class="btn btn-default">
 							<i class="fa fa-search"></i>搜索</button>
 					</form>
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" id="index-explore">
 						<li >
 							<a href="#"><i class="fa fa-align-left">&nbsp;发现</i>
 								<span class="sr-only">(current)</span></a>
@@ -78,14 +78,14 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="/createArticle">博客</a></li>
+								<li><a href="/createArticle" th:href="@{/createArticle}">博客</a></li>
 								<li><a href="/publish">问题</a></li>
-								<li><a href="#">视频</a></li>
-								<li><a href="#">书籍</a></li>
+								<li><a href="/learnInfo">视频</a></li>
+								<li><a href="/learnInfo">书籍</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">项目</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#">资源</a></li>
+								<li><a href="/qiniu/file">资源</a></li>
 								<li><a href="#">工具</a></li>
 							</ul>
 						</li>

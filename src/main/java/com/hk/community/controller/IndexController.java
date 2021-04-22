@@ -1,7 +1,9 @@
 package com.hk.community.controller;
 
+import com.hk.community.dto.ArticlePaginationDTO;
 import com.hk.community.dto.PaginationDTO;
 import com.hk.community.model.User;
+import com.hk.community.service.serviceImp.ArticleServiceImpl;
 import com.hk.community.service.serviceImp.QuestionServiceImp;
 import com.hk.community.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +27,14 @@ public class IndexController {
 	private QuestionServiceImp questionService ;
 	@Autowired
 	private UserServiceImp userService ;
-
+	@Autowired
+	private ArticleServiceImpl articleService ;
 
 
 	@RequestMapping("/")    //GetMapping
 	public String index(HttpServletRequest request ,
 	                    Model model ,
 	                    @RequestParam(name = "pageIndex" ,defaultValue = "1") int pageIndex){
-
 		String token = null;
 
 		//获取Cookie
@@ -57,8 +59,46 @@ public class IndexController {
 		//分页查询文章: pageIndex
 		PaginationDTO selectQuestionPage = questionService.selectQuestionPage(pageIndex);
 		model.addAttribute("questionPage" , selectQuestionPage) ;
-
 		return "index" ;
 	}
+
+
+
+	@RequestMapping("/homePage")    //GetMapping
+	public String homePage(HttpServletRequest request ,
+	                    Model model ,
+	                    @RequestParam(name = "pageIndex" ,defaultValue = "1") int pageIndex){
+		String token = null;
+
+		//获取Cookie
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null){
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("user_token")){
+					token = cookie.getValue() ;
+					break;
+				}
+			}
+		}
+		//根据Token 获取 User对象
+		if (token != null){
+			User user = userService.findUserByToken(token);
+			if (user != null){
+				request.getSession().setAttribute("user",user);
+			}
+		}
+
+		//查询所有文章
+		//分页查询文章: pageIndex
+		final ArticlePaginationDTO articlePage = articleService.selectArticlePage(pageIndex);
+		model.addAttribute("articlePage" , articlePage) ;
+		return "learn" ;
+	}
+
+
+
+
+
+
 
 }

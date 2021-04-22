@@ -1,8 +1,10 @@
 package com.hk.community.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.hk.community.model.Article;
+import com.hk.community.dto.ArticleDTO;
 import com.hk.community.service.serviceImp.ArticleServiceImpl;
+import com.hk.community.service.serviceImp.CategoryServiceImpl;
+import com.hk.community.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +26,18 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleServiceImpl articleService ;
+	@Autowired
+	private CategoryServiceImpl categoryService ;
+	@Autowired
+	private UserServiceImp userServiceImp ;
+
 
 	//创作article
 	@RequestMapping("/createArticle")
 	public String createArticle(){
+
 		return "edit" ;
+
 	}
 
 	//保存文章： 接受前端的markdown 数据
@@ -76,13 +85,12 @@ public class ArticleController {
 		return JSON.toJSONString(paramete) ;
 	}
 
-	@RequestMapping("/showAllArticles")
-	public String showAllArticles(Model model){
+	@RequestMapping("/showArticle")
+	public String showAllArticles(@RequestParam(name = "count") Integer count ,
+			Model model){
 
-		Article byId = articleService.getById(9);
-		//final String toHtml = MarkdownUtils.markdownToHtmlExtensitons(byId.getContent());
-		//byId.setContent(toHtml);
-		model.addAttribute("article", byId) ;
+		final ArticleDTO articleDTO = articleService.getArticleDTO(count);
+		model.addAttribute("article", articleDTO) ;
 		return "article" ;
 	}
 

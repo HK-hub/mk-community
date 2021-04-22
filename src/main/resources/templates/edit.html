@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>码客社区 | 创作中心</title>
+	<!-- JQuery 的引入要在 BootStrap 的JS 之前-->
+	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
+	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
 	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
 	<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
 	<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
@@ -10,30 +13,69 @@
 	<link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
 	<!-- 引入自定义 JS -->
 	<script th:src="${'/js/community-js/community_js.js'}" src="/js/community-js/community_js.js"></script>
-	<!-- JQuery 的引入要在 BootStrap 的JS 之前-->
-	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
-	<script th:src="${'/js/bootstrap.min.js'}" type="application/javascript" href="/js/bootstrap.min.js"></script>
-	<!-- 图标 -->
-	<link rel="shortcut icon" th:href="${'/img/favicon.ico'}" href="/img/favicon.ico" type="image/x-icon" />
-	<!--制作的图标，使用href关联，仅仅需要更改href的内容  -->
-	<!-- 引入Font Awesome 图标-->
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 	<!-- ⚠️生产环境请指定版本号，如 https://cdn.jsdelivr.net/npm/vditor@x.x.x/dist... -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
 	<script src="https://cdn.jsdelivr.net/npm/vditor/dist/index.min.js"></script>
+	<link rel="stylesheet" href="/css/myCSS/editor.css">
+	<!-- 引入Font Awesome 图标-->
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
 
 </head>
 
 <body>
 
-	<!-- 公共: 导航条 -->
-	<div th:insert="~{navigation :: header-nav}"></div>
-	<input type="text" id="title-input" class="form-control" placeholder="输入文章标题...">
-	<!-- Indicates a successful or positive action -->
-	<button type="button" id="save-post-btn" class="btn btn-success">发布文章</button>
-	<!-- Contextual button for informational alert messages -->
-	<button type="button" id="save-draft-btn" class="btn btn-info">保存草稿</button>
+	<!-- 文章编辑器 -->
+	<div class="layout_panel">
+		<div class="article">
+			<div class="article-bar-link-box">
+				<a href="/learn" class="btn-goback" th:href="@{/learn}">
+					<i class="fa fa-chevron-left"></i>&nbsp;文章管理
+				</a>
+			</div>
+			<!-- 输入框 -->
+			<div class="article-bar-input-box">
+				<input type="text" class="text-input" placeholder="欢迎使用编辑器">
+				<span class="article-bar-num">
+                    <span>20</span>/100
+                </span>
+			</div>
+			<div class="article-bar-user-box">
+
+				<button class="btn btn-save" id="save-draft-btn">
+					保存至草稿
+				</button>
+
+				<button class="btn btn-publish" id="save-post-btn">
+					发布文章
+				</button>
+
+				<div class="user-box">
+					<div class="user-icon">
+						<a href="">
+							<img src="img/qq.png" alt="" width="32" height="30" style="border-radius: 16px;">
+						</a>
+					</div>
+					<div class="user-option">
+						<a href="">博客管理</a>
+						<a href="">博客管理</a>
+						<a href="">退出</a>
+					</div>
+					<script>
+                        var icon = document.querySelector(".user-icon");
+                        var option = document.querySelector(".user-option");
+                        icon.addEventListener('mouseover', function() {
+                            option.style.display = "block";
+                        })
+                        icon.addEventListener('mouseleave', function() {
+                            option.style.display = "none";
+                        })
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="vditor" class="vditor"></div>
-	<script src="./js/community-js/vditor.js"></script>
+	<script src="./js/community-js/vditor.js" th:src="${'/js/community-js/vditor.js'}"></script>
 
 </body>

@@ -1,0 +1,52 @@
+.upload-drop-zone {
+    height: 200px;
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+/* skin.css Style*/
+
+.upload-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center
+}
+
+.upload-drop-zone.drop {
+    color: #222;
+    border-color: #222;
+}
+
+.upload-drop-zone input {
+    display: none;
+}
+
+.text-type {
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    padding: 6px 12px;
+    line-height: 1.4285714;
+    color: #aca3a3;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.text-type:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgb(0 0 8%), 0 0 8px rgb(102 175 60%)
+}
+
+
+.btn-success{
+    width: 151px;
+    height: 46px;
+    float: right;
+    font-size: 23px;
+}
+

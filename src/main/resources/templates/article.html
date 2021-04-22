@@ -1,59 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
-	<meta charset="UTF-8">
-	<title th:text="${article.title}">Coder Community</title>
-	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
-	<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
-	<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
-	<!-- 引入自定义 CSS 样式-->
-	<link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
-	<script src="../static/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}"></script>
-	<link rel="stylesheet" href="../static/mdeditor/css/editormd.css" th:href="${'/mdeditor/css/editormd.css'}">
-	<link rel="stylesheet" href="../static/mdeditor/css/editormd.preview.css" th:href="${'/mdeditor/css/editormd.preview.css'}">
-	<link rel="stylesheet" href="../static/css/myCSS/article.css" th:href="${'/css/myCSS/article.css'}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${article.title}">Coder Community</title>
+    <!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
+    <link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/myCSS/single.css">
+    <script src="/css/myCSS/single.js"></script>
+    <link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
+    <script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/mdeditor/css/editormd.css" th:href="${'/mdeditor/css/editormd.css'}">
+    <link rel="stylesheet" href="../static/mdeditor/css/editormd.preview.css" th:href="${'/mdeditor/css/editormd.preview.css'}">
+    <link rel="stylesheet" href="/css/myCSS/article.css" th:href="${'/css/myCSS/article.css'}">
+    <!-- 评论系统-->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script src="/css/myCSS/single.js"></script>
+    <link rel="stylesheet" href="/css/myCSS/single.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
 </head>
 
-<body style="background-image: url('/img/bkg_article.jpg')">
-	<!-- 公共: 导航条 -->
-	<div th:insert="~{navigation :: header-nav}"></div>
-	<div class="article-details">
-		<!-- 用户栏目-->
-		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" id="user-div">
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-default" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+                <a class="navbar-brand" href="#">码客书屋</a>
+            </div>
 
-		</div>
-		<div>
-			<!--文章主体内容-->
-			<div id="doc-content" class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-				<textarea style="display:none;" placeholder="markdown" th:text="${article.content}"></textarea>
-			</div>
-		</div>
-		<!--标签栏目 -->
-		<div id="tag-div" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-			<h3>热门话题</h3>
-			<ul>
-				<li>Java Web 知识点总结</li>
-				<li>Elastic Search 问题报错</li>
-				<li>Spring Boot 版本总裁机制的坑</li>
-				<li>Spring Boot 版本总裁机制的坑</li>
-				<li>Github Oauth 使用token置换用户信息的一个要点</li>
-				<li>•••</li>
-			</ul>
-		</div>
-	</div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">动态 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">发现</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">登录</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人页面 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+    <section class="site-section py-lg article-section">
+        <div class="container" style="width: 95%;">
+
+            <div class="row blog-entries element-animate">
+                <!-- 个人标签页 -->
+                <div class="col-md-12 col-lg-3 sidebar" style="max-width: 289px;">
+                    <div class="sidebar-box search-form-wrap">
+                        <form action="#" class="search-form">
+                            <div class="form-group">
+                                <span class="icon fa fa-search"></span>
+                                <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- END sidebar-box -->
+                    <div class="sidebar-box">
+                        <div class="bio text-center">
+                            <img src="/img/defaultUser.png" alt="Image Placeholder" class="img-fluid mb-5">
+                            <div class="bio-body">
+                                <h2 th:text="${article.creator.name}">小码客</h2>
+                                <p class="mb-4">Lorem ipeniam fuga sit molestias minus.</p>
+                                <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">查看我的个人页面</a></p>
+                                <p class="social">
+                                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END sidebar-box -->
+                    <div class="sidebar-box">
+                        <h3 class="heading">热门帖子</h3>
+                        <div class="post-entry-sidebar">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <img src="img/login-bkg.jpg" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h5>There’s a Cool New Way for Men to Wear Socks and Sandals</h5>
+                                            <div class="post-meta">
+                                                <span class="mr-2">March 15, 2018 </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="img/login-bkg.jpg" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h5>There’s a Cool New Way for Men to Wear Socks and Sandals</h5>
+                                            <div class="post-meta">
+                                                <span class="mr-2">March 15, 2018 </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="img/login-bkg.jpg" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h5>There’s a Cool New Way for Men to Wear Socks and Sandals</h5>
+                                            <div class="post-meta">
+                                                <span class="mr-2">March 15, 2018 </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END sidebar -->
+
+                <!-- 文章页 -->
+                <div class="col-md-12 col-lg-7 main-content">
+                    <div>
+                        <!--文章主体内容-->
+                        <div id="doc-content" class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+                            <h1 th:text="${article.title}">码客社区精选文章</h1>
+                            <div  class="article-header" style="width:1000px;height: 70px">
+                                <p></p>
+                                <div class="article-info">
+                                    <span class="" th:text="${article.creator.name}" style="margin-right: 10px"></span>
+                                    <span th:text="${#dates.format(article.createTime ,'yyyy-MM-dd HH:mm:ss')}">4564546</span>
+                                    <span class="fa fa-eye"></span>&nbsp;<span th:text="${article.viewCount}" style="margin-right: 10px;"></span>
+                                    <span class="fa fa-star"></span>&nbsp;<span th:text="${article.viewCount}"></span>
+                                    <p></p>
+                                    分类专栏: <span th:text="${article.category.name}"></span>
+                                </div>
+                            </div>
+                            <textarea style="display:none;" placeholder="markdown" th:text="${article.content}"></textarea>
+                        </div>
+                        <!-- 评论系统： -->
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" id="vcomments"></div>
+                    </div>
+                </div>
+
+                <!-- END main-content -->
+                <!-- 目录导航 -->
+                <aside class="col-md-12 col-lg-2 sidebar" style="float: right">
+                    <div class="aside-box" style="max-height: 401.5px;display: block;">
+                        <div class="groupfile" style="max-height: 401.5px;display: block;">
+                            <h3 class="aside-title">目录</h3>
+                            <div class="align-items-stretch group_item">
+                                <div class="pos-box">
+                                    <div class="scroll-box">
+                                        <div class="toc-box">
+                                            <ol>
+                                                <li class="active"><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                                <li><a href="javascript:;">safassfa</a></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- asider-box end -->
+                    <div class="sidebar-box">
+                        <h3 class="heading">种类</h3>
+                        <ul class="categories">
+                            <li><a href="#">Java <span>(12)</span></a></li>
+                            <li><a href="#">C/C++ <span>(22)</span></a></li>
+                            <li><a href="#">Python <span>(37)</span></a></li>
+                            <li><a href="#">MySQL <span>(42)</span></a></li>
+                            <li><a href="#">Linux <span>(14)</span></a></li>
+                            <li><a href="#">SpringBoot <span>(20)</span></a></li>
+
+                        </ul>
+                    </div>
+                    <!-- END sidebar-box -->
+
+                    <div class="sidebar-box">
+                        <h3 class="heading">标签</h3>
+                        <ul class="tags">
+                            <li><a href="#">JavaWeb</a></li>
+                            <li><a href="#">JavaEE</a></li>
+                            <li><a href="#">C/C++</a></li>
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">MySQL</a></li>
+                            <li><a href="#">SpringMVC</a></li>
+                            <li><a href="#">SpringBoot</a></li>
+                            <li><a href="#">HTML/CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="#">Mybatis</a></li>
+                            <li><a href="#">Linux</a></li>
+                            <li><a href="#">Groovy</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
 </body>
 
-	<script th:src="@{/mdeditor/lib/jquery-3.5.1.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/marked.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/prettify.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/raphael.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/underscore.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/sequence-diagram.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/flowchart.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/jquery.flowchart.min.js}"></script>
-	<script th:src="@{/mdeditor/lib/editormd.min.js}"></script>
-	<script type="text/javascript">
+    <!--  解析文章： -->
+    <script th:src="@{/mdeditor/lib/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/marked.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/prettify.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/raphael.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/underscore.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/sequence-diagram.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/flowchart.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/jquery.flowchart.min.js}"></script>
+    <script th:src="@{/mdeditor/lib/editormd.min.js}"></script>
+    <script type="text/javascript">
         var testEditor;
         $(function () {
             testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
@@ -69,7 +271,14 @@
                 previewTheme : "dark",
             });
         });
-	</script>
+    </script>
+
+    <!-- 评论系统： -->
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'zb1717nlMvXfvuxvBen0hWHT-gzGzoHsz',
+            appKey: 'gNubzg6p4i991tqHNsg5BQlt'
+        })
+    </script>
 </html>
-
-

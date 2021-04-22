@@ -5,6 +5,26 @@
 	<title>Title</title>
 </head>
 <body>
+
+	<!-- 公共样式, JS -->
+	<div class="common-head-style" th:fragment="common-head-style">
+		<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
+		<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
+		<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
+		<!-- 引入自定义 CSS 样式-->
+		<link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
+		<!-- JQuery 的引入要在 BootStrap 的JS 之前-->
+		<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
+		<script th:src="${'/js/bootstrap.min.js'}" type="application/javascript" href="/js/bootstrap.min.js"></script>
+		<!-- 图标 -->
+		<link rel="shortcut icon" th:href="${'/img/favicon.ico'}" href="/img/favicon.ico" type="image/x-icon" />
+		<!--制作的图标，使用href关联，仅仅需要更改href的内容  -->
+		<!-- 引入Font Awesome 图标-->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- 首页通知-->
+		<script src="../static" th:src="${'/js/community-js/index.js'}"></script>
+	</div>
+
 	<!-- 码客社区名言	-->
 	<div class="cc-aphorisms" th:fragment="cc-phorisms">
 		<div id="announcement-banner" class="announcement-banner alert-dismissable">

@@ -1,0 +1,153 @@
+/* <!-- 文章编辑器 --> */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.layout_panel {
+    width: 100%;
+    height: 56px;
+    overflow: inherit;
+    background-color: #f3f3f3;
+    margin-top: 4px;
+}
+
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+
+.article-bar-link-box {
+    display: flex;
+    height: 100%;
+    padding-left: 14px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn-goback{
+    text-decoration: none;
+    font-size: larger;
+    color: skyblue;
+}
+.btn-goback:hover {
+    text-decoration: none;
+
+    color: skyblue;
+}
+
+.btn-goback {
+    color: skyblue;
+    margin: auto 0;
+    width: 88px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* 输入框 */
+.article-bar-input-box {
+    width: 100%;
+    margin: 8px 16px 8px 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 21px;
+    display: flex;
+    flex-direction: row;
+}
+
+.text-input {
+    width: 100%;
+    margin-left: 4px;
+    padding: 8px;
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 21px;
+    background-color: #fff;
+    border: 0;
+    outline: none;
+}
+
+.article-bar-num {
+    float: right;
+    line-height: 40px;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+
+/* 个人信息 */
+.article-bar-user-box {
+    padding: 8px 32px 8px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.article-bar-user-box ul>li {
+    float: left;
+}
+
+.article-bar-user-box .btn-save {
+    margin-right: 16px;
+    padding: 5px 16px;
+    font-size: 16px;
+    color: #fc5531;
+    border: 1px solid #fc5531;
+    border-radius: 18px;
+    white-space: nowrap;
+    background-color: #fff;
+}
+
+.article-bar-user-box .btn-publish {
+    padding: 5px 16px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    white-space: nowrap;
+    background: linear-gradient( 92deg, #ffba40, #ff503e 37%, #ff2f50 81%, #ff1b40);
+}
+
+.user-box {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+
+
+/* //用户选项 */
+.user-option {
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: -35px;
+    padding: 16px;
+    height: 110px;
+    width: 96px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 8px 0 #ebebeb;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.user-option a {
+    font-size: 14px;
+    color: #3c3c3c;
+    text-decoration: none;
+}
+
+
+/* vditor */
+#vditor{
+    margin-bottom: 4px;
+}
+

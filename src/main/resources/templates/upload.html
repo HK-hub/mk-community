@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JQuery 的引入要在 BootStrap 的JS 之前-->
+    <script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
+    <link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
+    <script src="/js/community-js/upload.js"></script>
+    <!-- 引入自定义 CSS 样式-->
+    <link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
+    <link rel="stylesheet" href="/css/myCSS/upload.css">
+</head>
+
+<body>
+    <!-- 公共: 导航条 -->
+    <div th:insert="~{navigation :: header-nav}"></div>
+    <form id="js-upload-form" enctype="multipart/form-data" method="post" action="/qiniu/upload">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="con-left" style="padding-top: 60px;">
+                    <h3 style="text-align: center;">填写信息</h3>
+                    <div class="form-group">
+                        <label for="Bookname">名称</label>
+                        <input type="text" id="Bookname" class="form-control" placeholder="name" name="bookName">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookAuthor">作者</label>
+                        <input type="text" id="bookAuthor" class="form-control" placeholder="editor" name="author">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDescription">作品简介</label>
+                        <textarea id="bookDescription" name="description" class="form-control" rows="3" placeholder="最多不超过100字" style="height: 300px;">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookTarget">书籍分类</label>
+                        <select name="target" id="bookTarget" class="text-type">
+                            <option value ="backstage">后台</option>
+                            <option value ="frontEnd">前端</option>
+                            <option value ="mobile">移动端</option>
+                            <option value="cloudComputing&bigData">云计算&大数据</option>
+                            <option value="network&maintenance&system">网络&系统&运维</option>
+                            <option value ="database">数据库</option>
+                            <option value="ui">UI&美工&设计</option>
+                            <option value="gamedevelopment">游戏开发</option>
+                            <option value="internetOfThings">硬件&物联网</option>
+                            <option value="product&operations&IDE">产品&运营&IDE</option>
+                            <option value="nirvana">心灵鸡汤&必杀技</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="con-right" style="padding-top: 80px;">
+                    <div class="form-group">
+                        <label for="InputFile">上传文件</label>
+                        <div class="upload-drop-zone" id="drop-zone1">
+                            拖拽上传&nbsp;|&nbsp;
+                            <a href="javascript:;" class="up_file" onclick="ClickInputFile();">点击上传</a>
+                            <input type="file" id="InputFile" class="inputfile"  name="files" multiple="multiple" onchange="showFile()">
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Inputimg">上传封面</label>
+                        <div class="upload-drop-zone" id="drop-zone2">
+                            拖拽上传&nbsp;|&nbsp;
+                            <a href="javascript:;" class="up_img" onclick="ClickInputImg();"  >点击上传</a>
+                            <input type="file" id="Inputimg" class="inputimg" name="files" onchange="showImg()" >
+                        </div>
+
+                    </div>
+
+                    <div class="form-group finished">
+                        <h3>已上传文件</h3>
+                        <div class="list-group" id="list-files">
+<!--                            <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>coder-community.jpg</a>-->
+<!--                            <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>coder-community.jpg</a>-->
+<!--                            -->
+                            <a href="#" class="list-group-item list-group-item-success" id="none-file-upload"><span class="badge alert-success pull-right">Warning</span>未上传文件，请上传文件哦！</a>
+                        </div>
+                    </div>
+
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="status-check-btn">已阅读上传须知</label>
+                    </div>
+                    <button type="submit" id="upload-btn" class="btn btn-success" onclick="uploadFile();">上传</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+
+</html>

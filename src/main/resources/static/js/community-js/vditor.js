@@ -2,7 +2,7 @@ const vditor = new Vditor('vditor', {
     "height": 1000,
     //"width": 1000,
     "placeholder": "快来创作吧",
-    "theme": "classic",
+    "theme": "dark",
     //历史记录时间间隔， 
     "undoDelay": 15,
 
@@ -14,7 +14,6 @@ const vditor = new Vditor('vditor', {
         "toc": true,
         //段落开头空两个
         "paragraphBeginningSpace": true,
-
     },
     //自定义工具栏
     toolbar: [
@@ -75,8 +74,6 @@ const vditor = new Vditor('vditor', {
             }
         },
     ],
-
-
     // 缓存
     "cache": {
         "enable": false //是否使用 localStorage 进行缓存
@@ -85,7 +82,7 @@ const vditor = new Vditor('vditor', {
     // 预览：
     "preview": {
         "theme": {
-            "current": "Ant Design"
+            "current": "dark"
         },
         //预览最大宽度
         "maxWidth": 950,
@@ -236,7 +233,7 @@ const vditor = new Vditor('vditor', {
     },
     // 大纲
     "outline": {
-        "enable": true
+        "enable": false
     },
 
     // hint
@@ -466,31 +463,5 @@ $("#save-post-btn").click(function() {
         },
     });
 })
-//还可以写一些正则
-//接下来是信息交互ajax
-
-
-
-// 图片上传业务处理
-//此接口里面调用的是本身的图片上传 业务方自行实现
-// handleImageUpload = (file, callback) => {
-//     const reader = new FileReader();
-//     let formdata = new FormData();
-//     formdata.append("files", file[0]);
-//     reader.onload = () => {
-//         // setTimeout 模拟异步上传图片
-//         // 当异步上传获取图片地址后，执行callback回调（参数为imageUrl字符串），便可将图片地址写入markdown
-//         new Promise(resolve => {
-//             this.props.dispatch({
-//                 type: "docManager/imageUpload",
-//                 payload: { resolve, username: myInfo.userId, formdata }
-//             });
-//         }).then(res => {
-//             let imgurl = res.result.path;
-//             callback(imgurl);
-//         });
-//     };
-//     reader.readAsDataURL(file[0]);
-// };
 
 
