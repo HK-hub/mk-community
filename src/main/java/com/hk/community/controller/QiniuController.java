@@ -53,22 +53,26 @@ public class QiniuController {
 	public String upload(@RequestParam("files") MultipartFile[] multipartFiles,
 	                     Model model ,
 	                     HttpServletRequest request,
-	                     @PathVariable(name = "action" , value = "video", required = false)String action) throws IOException {
+	                     @PathVariable(name = "action")String action) throws IOException {
 
 		//将文件存储到对象存储
 		Map fileInfo = qiniuFileServiceImp.fileUplod(multipartFiles, model);
 		String msg ;
 		//String action = "book" ;
 		//构造数据库存储对象
-		if("video".equals(action)){
-			//构造视频对象
+		if("book".equals(action)){
+			/*//构造视频对象
 			System.out.println("视频");
-			msg = videoService.insertVideo(request, fileInfo);
-		}
-		else{
+			msg = videoService.insertVideo(request, fileInfo);*/
 			//构造书籍对象
 			System.out.println("书籍");
 			msg = bookService.insertBook(request, fileInfo) ;
+		}
+		else{
+
+			//构造视频对象
+			System.out.println("视频");
+			msg = videoService.insertVideo(request, fileInfo);
 		}
 		//将视频或者书籍url 放入model
 		return "msg" ;

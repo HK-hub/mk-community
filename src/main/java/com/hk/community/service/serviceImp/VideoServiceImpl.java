@@ -40,7 +40,10 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		final String videoName = request.getParameter("videoName");
 		final String description = request.getParameter("description");
 		final String target = request.getParameter("target");
-		final String copyright = request.getParameter("copyright");
+		String copyright = request.getParameter("copyright");
+		if (copyright == null){
+			copyright = "1" ;
+		}
 		final String keywords = request.getParameter("keywords");
 		//视频url 链接： 最后一个为封面
 		final List<String> urls = (ArrayList)fileInfo.get("urls");
@@ -51,6 +54,7 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 
 		Video video = new Video();
 		//设置video
+
 		video.setCopyright(Integer.parseInt(copyright));
 		video.setVideoName(videoName);
 		video.setTarget(target);
@@ -65,10 +69,13 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		String msg = "success";
 		try {
 			//插入video
+			System.out.println("插入video");
 			final int insert = videoMapper.insert(video);
 			//插入videoResource 的链接
+			System.out.println("插入videoResource 的链接");
 			videoResourceService.insertVideoResource(video,urls);
 			//插入videoType
+			System.out.println("插入videoType");
 			videoTypeService.insertVideoType(video);
 			msg = "success" ;
 		}catch (MybatisPlusException e) {

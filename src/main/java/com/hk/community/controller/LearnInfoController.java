@@ -40,18 +40,15 @@ public class LearnInfoController {
 
 
 
-	
+
 	//视频书籍页面： 默认书籍
 	@RequestMapping("/learnInfo/{action}")
 	public String learnInfo(@PathVariable String action,
-	                        @RequestParam(name = "stat" ,defaultValue = "1")Integer stat,
+	                        @RequestParam(name = "stat" ,defaultValue = "1" ,required = false)Integer stat,
 	                        Model model){
-
 		if ("book".equals(action)){
-
 			return "book" ;
-		}else {
-
+		}else{
 			VideoPaginationDTO videoPaginationDTO =  videoService.getVideoPaginationDTO(stat);
 			model.addAttribute("videoPagination",videoPaginationDTO) ;
 		}

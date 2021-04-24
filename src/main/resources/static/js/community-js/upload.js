@@ -4,7 +4,7 @@ var uploadFile = function () {
     var formdata = new FormData(document.getElementById("js-upload-form"));
     console.log(formdata);
     $.ajax({
-        url:"qiniu/upload",
+        url:"qiniu/upload/video",
         type: "POST",
         data: formdata,
         processData:false,
