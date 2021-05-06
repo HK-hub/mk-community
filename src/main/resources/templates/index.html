@@ -1,136 +1,124 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
-	<meta charset="UTF-8">
-	<title>&nbsp; 码客社区</title>
-	<!-- 图标 -->
-	<link rel="shortcut icon"  href="/img/favicon.ico" type="image/x-icon" />
-	<!--制作的图标，使用href关联，仅仅需要更改href的内容  -->
-	<!-- 引入Font Awesome 图标-->
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- 首页通知-->
-	<script src="/js/community-js/index.js" ></script>
-
-	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
-	<link rel="stylesheet"  href="/css/community.css">
-	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/community-js/index.js" ></script>
-
-
-
-
+    <title>码客社区:Coder Community</title>
+    <link rel="stylesheet" href="/home/css/style.css" type="text/css" media="all" />
 </head>
 
 <body>
-	<!-- 公共: 导航条 -->
-	<div th:insert="~{navigation :: header-nav}"></div>
-	<!-- 名言引用 可关闭 -->
-	<div th:insert="~{common :: cc-phorisms}"></div>
-	<!-- 问题列表栏目 -->
-	<!-- 发布框， 发布MD 编辑器-->
-	<div class="container-fluid main">
-		<div class="row">
-			<!-- MarkDown 文章编写div -->
-			<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-				<h2> <!-- 发起图标 -->
-					<span class="glyphicon glyphicon-list" aria-hidden="true"></span> &nbsp;发&nbsp;现
-				</h2>
-				<hr>
-				<!-- 文章列表视图 : media  -->
-				<div class="media" th:each="question : ${questionPage.questionDTOS}">
-					<div class="media-left">
-						<a href="#">
-							<!--th:src="${question.user.avatar_url}"-->
-						<img class="media-object index-user-question-avatar img-rounded"
-								 src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1792571644,218025841&fm=26&gp=0.jpg">
-						</a>
-					</div>
-					<div class="media-body">
-						<h3 class="media-heading" th:text="${question.title}">Spring Data Jpa</h3>
-						<!-- 问题文章摘要 -->
-						<span class="question-summary" th:text="${question.description}">从SpringBoot自动装配/配置机制, Web层, 数据库层, 常用注解, 消息, 缓存, 分布式, 启动流程等深入源码进行分析</span><br>
-						<!-- 问题文章的特征描述: 文章标签, 作者, 浏览量, 喜欢, 评论数等 -->
-						<div class="question-feature-desc" >
-							<span class="label label-success tags" th:text="${question.tags}">primary</span>
-							＠<code th:text="${question.user.name}">温柔的心</code>&nbsp;发起了问题
-							● <span th:text="${question.comment_count}">0</span>&nbsp;个回复
-							● <span th:text="${question.view_count}">0</span>&nbsp;次浏览
-							● <span th:text="${#dates.format(question.create_time, 'yyyy-MM-dd HH:mm')}">2021 五月 20</span>&nbsp;
-						</div>
-					</div>
-					<hr>
-				</div>
-				<!-- 分页按钮： 第二版启用 -->
-				<div class="self-pagination-nav">
-					<ul class="self-pagination-ul">
-						<li class="page_li" th:if="${questionPage.showPrevious}">
-							<a href="#" th:href="@{/(pageIndex=${questionPage.current - 1})}">
-								<button class="page_btn" style="width:100px" id="prePage">上一页</button>
-							</a>
-						</li>
-						<li class="page_li">
-							<a href="#" th:href="@{/(pageIndex=1)}">
-								<button class="page_btn" id="page_btn1">1</button>
-							</a>
-						</li>
-						<li class="page_li">
-							<span class="pages_span" id="prePoint">...</span>
-						</li>
-						<li class="page_li active" th:each="page_index : ${questionPage.pages}" th:class="${questionPage.current == page_index} ? 'active' : ''">
-							<a href="#" th:href="@{/(pageIndex=${page_index})}">
-								<button class="page_btn" th:text="${page_index}">1</button>
-							</a>
-						</li>
-						<li class="page_li">
-							<span class="pages_span" id="sufPoint">...</span>
-						</li>
-						<li class="page_li">
-							<a href="#" th:href="@{/(pageIndex=${questionPage.getPage()})}">
-								<button class="page_btn" th:text="${questionPage.getPage()}"></button>
-							</a>
-						</li>
-						<li class="page_li" th:if="${questionPage.showNext}">
-							<a href="#" th:href="@{/(pageIndex=${questionPage.current + 1})}">
-								<button class="page_btn" style="width:100px" id="sufPage">下一页</button>
-							</a>
-						</li>
-					</ul>
-				</div>
+    <div class="Coming-block">
 
-			</div>
+        <div class="page">
 
-			<!-- 侧边栏： 提示信息栏目-->
-			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<h3>热门话题</h3>
-				<ul>
-					<li>Java Web 知识点总结</li>
-					<li>Elastic Search 问题报错</li>
-					<li>Spring Boot 版本总裁机制的坑</li>
-					<li>Spring Boot 版本总裁机制的坑</li>
-					<li>Github Oauth 使用token置换用户信息的一个要点</li>
-					<li>•••</li>
-				</ul>
+        </div>
+        <div class="content">
+            <div class="logo">
+                <a class="brand-logo" href="/">码 客</a>
+            </div>
+            <div class="w3l-coming-soon-page">
+                <div class="coming-block">
+                    <h1>Coder Community</h1>
+                    <p>一个专属于你的程序学习世界, 期待你的到来</p>
+                    <div class="countdown">
+                        <div class="countdown__days">
+                            <div class="number"></div>
+                            <span class>Days</span>
+                        </div>
 
-			</div>
-		</div>
-	</div>
+                        <div class="countdown__hours">
+                            <div class="number"></div>
+                            <span class>Hours</span>
+                        </div>
 
-	<!-- 尾部 -->
-	<div class="footer-wra">
-		<div class="footer-info">
-			Copyright © 2021 ·
-			<a href="#" target="_blank" title="转载">CC BY-NC-SA 3.0</a>
-			<span>
-                <a href="/index.html" th:href="@{/}" target="_blank">博客书屋</a>
-            </span>
-			<p>
-				本网站由LJH ， HH 制作
-			</p>
-		</div>
-	</div>
+                        <div class="countdown__minutes">
+                            <div class="number"></div>
+                            <span class>Minutes</span>
+                        </div>
 
+                        <div class="countdown__seconds">
+                            <div class="number"></div>
+                            <span class>Seconds</span>
+                        </div>
+                    </div>
+                    <a href="/homePage" class="home">Back to Home</a>
+                </div>
+            </div>
+            <div class="copy-right text-center">
+            <p>© 2019 Coder Community. All rights reserved | Design by
+                    <a href="/homePage" target="_blank">码客Union</a></p>
+            </div>
+        </div>
 
+        <script src="/home/js/jquery-3.3.1.min.js"></script>
+        <script>
+            (() => {
+                // Specify the deadline date
+                const startDate = new Date('2021-4-30 5:30:30').getTime();
+
+                // Cache all countdown boxes into consts
+                const countdownDays = document.querySelector('.countdown__days .number');
+                const countdownHours = document.querySelector('.countdown__hours .number');
+                const countdownMinutes = document.querySelector('.countdown__minutes .number');
+                const countdownSeconds = document.querySelector('.countdown__seconds .number');
+
+                // Update the count down every 1 second (1000 milliseconds)
+                setInterval(() => {
+                    // Get current date and time
+                    const currentDate = new Date().getTime();
+
+                    // Calculate the distance between current date and time and the deadline date and time
+                    const distance = currentDate - startDate;
+
+                    // Calculations the data for remaining days, hours, minutes and seconds
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Insert the result data into individual countdown boxes
+                    countdownDays.innerHTML = days;
+                    countdownHours.innerHTML = hours;
+                    countdownMinutes.innerHTML = minutes;
+                    countdownSeconds.innerHTML = seconds;
+                }, 1000);
+            })();
+        </script>
+        <script>
+            var lFollowX = 0,
+                lFollowY = 0,
+                x = 0,
+                y = 0,
+                friction = 1 / 30;
+
+            function animate() {
+                x += (lFollowX - x) * friction;
+                y += (lFollowY - y) * friction;
+
+                translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+                $('.page').css({
+                    '-webit-transform': translate,
+                    '-moz-transform': translate,
+                    'transform': translate
+                });
+
+                window.requestAnimationFrame(animate);
+            }
+
+            $(window).on('mousemove click', function (e) {
+
+                var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+                var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+                lFollowX = (20 * lMouseX) / 100; // 100 : 12 = lMouxeX : lFollow
+                lFollowY = (10 * lMouseY) / 100;
+
+            });
+
+            animate();
+        </script>
+    </div>
 </body>
+
 </html>

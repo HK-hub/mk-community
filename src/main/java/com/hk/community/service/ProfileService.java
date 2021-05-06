@@ -2,6 +2,8 @@ package com.hk.community.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hk.community.model.Question;
+import com.hk.community.model.User;
+import org.springframework.ui.Model;
 
 /**
  * @author 31618
@@ -14,4 +16,5 @@ public interface ProfileService {
 	public IPage<Question> getUserAllQuestions(int userId, int index) ;
 
 
+	void getPersonalProfile(User user, Model model);
 }

@@ -1,6 +1,7 @@
 package com.hk.community.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hk.community.dto.BookPaginationDTO;
 import com.hk.community.model.Book;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,4 +15,6 @@ public interface BookService extends IService<Book>{
 
 
 	String insertBook(HttpServletRequest request, Map fileInfo);
+
+	BookPaginationDTO getBookPaginationDTO(int stat);
 }

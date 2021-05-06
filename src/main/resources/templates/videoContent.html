@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>视频播放</title>
+	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="/css/video.css">
+	<script src="/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- 导航栏 -->
+	<link rel="stylesheet" href="/css/navcss/nav.css">
+	<link href="//fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<!-- 公共: 导航条 -->
+<div th:insert="~{navigation :: header-nav}"></div>
+<div class="vodeo-bodey">
+	<div class="video-w container" style="width: 92%;">
+		<!-- ------------- -->
+		<div class="left-box col-md-9 col-sm-12">
+			<div class="v-title-box" scrollshow="true">
+				<h1 class="v-title">
+					<strong>
+						<span class="title" th:text="${singleVideoContent.videoName}">这是我的播放器</span>
+					</strong>
+				</h1>
+				<!-- ---------------- -->
+				<div class="v-data">
+					<span class="view" th:text="${singleVideoContent.viewCount}">1w播放</span>&nbsp·&nbsp
+					<span class="dm" th:text="${singleVideoContent.commentCount}">3弹幕</span>
+					<span class="v-data"
+						  th:text="${#dates.format(singleVideoContent.publishedTime,'yyyy-MM-dd hh:mm:ss')}">2020-04-22 22:22:22</span>
+				</div>
+			</div>
+			<div class="v-player">
+				<div class="ljh-player">
+					<div class="player" style="width:100%;height:100%;">
+						<div class="ljhplayer" data-login="true">
+							<div class="ljhplay-area">
+								<div class="player-body">
+									<video width="100%" controls autoplay preload="auto" src=""
+										   th:src="${singleVideoContent.videoResource}">
+									</video>
+								</div>
+								<div class="player-buttom"></div>
+							</div>
+							<div class="ljhplay-footer">
+								<div class="ops">
+									<span><img src="/img/like.png" alt=""
+											   th:text="' '+ ${singleVideoContent.likeCount}"> 1000</span>
+									<span><img src="/img/collect.png" alt=""
+											   th:text="' ' + ${singleVideoContent.commentCount}"> 1000</span>
+									<span><img src="/img/share.png" alt=""
+											   th:text="' ' + ${singleVideoContent.getLikeCount()}"> 1000</span>
+								</div>
+								<div class="right-btn">
+									<div class="not-btn">
+										<img src="" alt=""> 记笔记
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="v-edior">
+				<div class="tip">
+                            <span class="copyright">
+                               <img src="/img/ban.png" alt="" width="20px" style="margin-bottom: 3px;"> 未经授权，禁止转载
+                            </span>
+				</div>
+				<div class="up-tip" th:text="${singleVideoContent.introduction}" style="margin-top: 10px;">
+					作者的话
+				</div>
+			</div>
+
+			<div class="tags-box" style="margin-top: 16px;">
+				<ul class="tags">
+					<li><a href="#" class="label label-info">Travel</a></li>
+					<li><a href="#" class="label label-info">Adventure</a></li>
+					<li><a href="#" class="label label-info">Food</a></li>
+					<li><a href="#" class="label label-info">Lifestyle</a></li>
+					<li><a href="#" class="label label-info">Business</a></li>
+					<li><a href="#" class="label label-info">Freelancing</a></li>
+					<li><a href="#" class="label label-info">Travel</a></li>
+					<li><a href="#" class="label label-info">Adventure</a></li>
+					<li><a href="#" class="label label-info">Food</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right-box col-md-3 col-sm-12">
+			<div class="user">
+				<div class="user_img">
+					<a href="" class="up">
+						<div class="up_img_box">
+							<img src="./my.jpg" alt="" class="up_img" th:src="${singleVideoContent.creator.avatar_url}">
+						</div>
+
+					</a>
+				</div>
+				<div class="user_name">
+					<div class="name" style="line-height: 20px;height: 20px;">
+						<a href="" style="color: #fe7299;" class="up_name" th:text="${singleVideoContent.creator.name}">LJH</a>
+						<a href="" class="message">
+							<!-- <i><img src="" alt=""></i> 发消息 发消息 -->
+							发消息
+						</a>
+					</div>
+					<div class="des" th:text="${singleVideoContent.creator.bio}">
+						somthing for nothing
+					</div>
+					<div class="btn_panel">
+						<div class="good">
+							<span>为TA点赞</span>
+						</div>
+						<div class="follow">
+							<span th:text="'关注'+${singleVideoContent.creator.subscription}">关注11.1w</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="page">
+				<div class="head-con">
+					<div class="head-left">
+						<h3>视频选集</h3>
+						<span class="cur-page" th:text=" '(01/' + ${singleVideoContent.getResourceUrls().size() + ')'}">(01/100)</span>
+					</div>
+					<div class="head-right">
+                                <span class="next-btn">
+                                    <span class="txt">自动轮播</span>
+                                <span class="switch-btn on">
+                                </span>
+                                </span>
+
+					</div>
+				</div>
+
+				<!-- 分集 -->
+				<div class="cur_list">
+					<ul class="list_box">
+						<li class="on">
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="list_content">
+									<div class="content_text">
+										<span class="list_num">p01</span>
+										<span class="part">我的第一个视频</span>
+									</div>
+								</div>
+								<div class="contnet_data">11:11</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 推荐视频 -->
+			<div class="right-box-cards">
+				<ul>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<div class="pic-box">
+								<div class="pic">
+									<a href="">
+										<img src="img/img_1.jpg" alt="" class="pic-img">
+									</a>
+								</div>
+							</div>
+							<div class="text-box">
+								<a href=""><span class="title">另一个视频</span></a>
+								<div class="up-box">
+									<a href=""></a>
+								</div>
+								<div class="count">
+									1w 播放&nbsp;.&nbsp; 11w 收藏
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+<script>
+    var btn = document.querySelector(".switch-btn");
+    btn.addEventListener("click", function () {
+        if (this.classList.contains('on'))
+            btn.className = "switch-btn";
+        else
+            btn.className = "switch-btn on";
+    })
+</script>
+<script>
+    var list = document.querySelector(".list_box");
+    for (var i = 0; i < list.children.length; i++) {
+        list.children[i].addEventListener("click", function () {
+            for (var j = 0; j < list.children.length; j++) {
+                list.children[j].className = "";
+            }
+            this.className = "on";
+        })
+        list.children[i].addEventListener("mouseover", function () {
+
+            this.style.backgroundColor = "#fff";
+        })
+        list.children[i].addEventListener("mouseleave", function () {
+
+            this.style.backgroundColor = "";
+        })
+    }
+</script>
+</html>

@@ -31,19 +31,22 @@ public class PublishController {
 	@RequestMapping("/publish")
 	public String publish(){
 
-		return "publish" ;
+		return "question" ;
 	}
 
 	@PostMapping("/publish/save_question")
 	public String saveQuestion(@RequestParam("title") String title ,
 	                           @RequestParam("description") String description ,
-	                           @RequestParam("tags") String tags,
-                               HttpServletRequest request,
-                               Model model
+	                           @RequestParam(value = "tags", required = false) String[] tags,
+	                           HttpServletRequest request,
+	                           Model model
 	){
-
+		String tagList = "";
+		for(String tag: tags){
+			tagList+=tag+";" ;
+		}
 		Question question = new Question();
-		question.setTags(tags);
+		question.setTags(tagList);
 		question.setTitle(title);
 		question.setDescription(description);
 		question.setCreate_time(System.currentTimeMillis());
@@ -52,7 +55,7 @@ public class PublishController {
 
 		if (user == null){
 			model.addAttribute("user_login_err", "错误: 用户未登录") ;
-			return "publish" ;
+			return "signIn" ;
 		}
 		else{
 			question.setCreator(user.getId());

@@ -25,7 +25,7 @@ public class VideoTypeServiceImpl extends ServiceImpl<VideoTypeMapper, VideoType
 
 		VideoType videoType = new VideoType();
 		videoType.setTypeName(video.getTarget());
-		videoType.setCreatorId(video.getCreator_id());
+		videoType.setCreatorId(video.getCreatorId());
 		videoType.setVideoId(video.getId());
 		videoType.setCreateTime(new Date());
 		videoType.setModifiedTime(videoType.getCreateTime());

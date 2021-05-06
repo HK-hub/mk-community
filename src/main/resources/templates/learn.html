@@ -21,13 +21,20 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/community-js/index.js" ></script>
 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/navcss/nav.css">
+     <link href="//fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body style="background-color: rgb(254,254,242);">
 
+
+    <!-- 公共: 导航条 -->
+    <div th:insert="~{navigation :: header-nav}"></div>
     <div class="site-wrap">
-        <!-- 公共: 导航条 -->
-        <div th:insert="~{navigation :: header-nav}"></div>
+
         <!-- 名言引用 可关闭 -->
         <div th:insert="~{common :: cc-phorisms}"></div>
 
@@ -92,7 +99,7 @@
                 </div>
                 <div class="row">
                     <!-- 每一个帖子-->
-                    <div class="col-md-4" th:each="article,articleStat:${articlePage.getArticleDTOS()}">
+                    <div class="col-md-4" style="margin-top: 35px" th:each="article,articleStat:${articlePage.getArticleDTOS()}">
                         <div class="entry2">
                             <a href="single.html" th:href="@{/showArticle(count=${articleStat.count} * ${articlePage.current})}"><img src="/css/article/images/img_4.jpg"  alt="Image" class="img-fluid rounded"></a>
                             <div class="excerpt">
@@ -105,7 +112,7 @@
                                 </div>
 
                                 <p class="posts-content-p" >欢迎来到码客社区, 尽情的畅游再学习的海洋中吧</p>
-                                <p><a href="#">Read More</a></p>
+                                <p><a href="#" style="float: right">Read More</a></p>
                             </div>
                         </div>
                     </div>

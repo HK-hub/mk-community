@@ -2,126 +2,174 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!-- 公共：导航页面-->
 <body>
-	<div class="common-nav" th:fragment="header-nav">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button class="header-nav-btn navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<a href="#" th:href="@{/(pageIndex=1)}">
-							<span class="sr-only">码客书屋</span>
-						</a>
-					</button>
-					<a class="navbar-brand nav-logo" href="#" th:href="@{/}">
-						<!--<img class="logo-CoderCommunity" src="" th:src="@{'/img/mk.png'}" alt="">-->
-						码客书屋
+
+
+<header  class="nav-fixed" th:fragment="header-nav">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg stroke px-0 pt-lg-0" style="position: relative;">
+			<h1 style="position: absolute;left: -134px;">
+				<a class="navbar-brand" href="/" style="margin-top: 22px">
+                        <span class="fa fa-pie-chart"></span> Code Community
+				</a>
+			</h1>
+			<button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+				<span class="navbar-toggler-icon fa icon-close fa-times"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" >
+				<ul class="navbar-nav mx-lg-auto">
+					<li class="nav-item @@home__active">
+						<a class="nav-link" href="/questionPage">问题</a>
+					</li>
+					<li class="nav-item @@home__active">
+						<a class="nav-link" href="/homePage">文章</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/video">视频</a>
+					</li>
+					<li class="nav-item active"><!-- active 设置为选中状态 -->
+						<a class="nav-link" href="/book">书籍</a>
+					</li>
+					<li class="nav-item @@services__active">
+						<a class="nav-link" href="/tools">资源</a>
+					</li>
+					<li class="nav-item @@contact__active">
+						<a class="nav-link" href="/project">项目</a>
+					</li>
+				</ul>
+
+				<!--/search-right-->
+				<div class="search-right">
+					<a href="#search" title="search">
+						<span class="fa" aria-hidden="false" style="width: 38px;">
+							<img src="/img/search.png" alt="" style="width: 100%;">
+						</span>
+
+					</a>
+					<!-- search popup -->
+					<div id="search-all" class="pop-overlay">
+						<div class="popup">
+
+							<form action="error.html" method="GET" class="search-box">
+								<input type="search" placeholder="Enter Keyword" name="search" required="required" autofocus="">
+								<button type="submit" class="btn">
+									<img src="/img/search.png" alt="" style="width: 100%;margin-top: -50px;"></button>
+							</form>
+						</div>
+						<a class="close" href="#close">×</a>
+					</div>
+					<!-- /search popup -->
+				</div>
+
+
+			</div>
+
+			<div class="mobile-position">
+				<nav class="navigation">
+					<div class="theme-switch-wrapper">
+						<label class="theme-switch" for="checkbox">
+							<input type="checkbox" id="change">
+							<div class="mode-container">
+								<i class="gg-sun"></i>
+								<i class="gg-moon"></i>
+							</div>
+						</label>
+					</div>
+				</nav>
+			</div>
+
+
+			<div class="user-box1 top-quote  mt-lg-0"  th:if="${session.user}!=null">
+				<div class="user-icon" style=" margin-top: 4px;">
+					<a href="">
+						<img src="/img/create.png" alt="" width="32" height="30" style="border-radius: 16px;">
 					</a>
 				</div>
-
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-graduation-cap" ></i>&nbsp;学习
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" id="">
-								<li><a href="#">博客</a></li>
-								<li><a href="#">文档</a></li>
-								<li><a href="/learnInfo">视频</a></li>
-								<li><a href="/learnInfo">书籍</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">开源</a></li>
-								<li><a href="#">项目</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">资源</a></li>
-								<li><a href="#">工具</a></li>
-							</ul>
-						</li>
-					</ul>
-					<form class="navbar-form navbar-left">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="搜索问题或文章">
-						</div>
-						<button type="submit" class="btn btn-default">
-							<i class="fa fa-search"></i>搜索</button>
-					</form>
-					<ul class="nav navbar-nav" id="index-explore">
-						<li >
-							<a href="#"><i class="fa fa-align-left">&nbsp;发现</i>
-								<span class="sr-only">(current)</span></a>
-						</li>
-						<li >
-							<a href="#"><span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true"></span>&nbsp;分享
-							</a>
-						</li>
-						<li >
-							<a href="#">
-								<i class="fa fa-book"></i>&nbsp;文章
-							</a>
-						</li>
-						<li >
-							<a href="#">
-								<i class="fa fa-list-alt"></i>&nbsp;活动
-							</a>
-						</li>
-						<li><a href="#">
-							<i class="fa fa-cloud-download"></i>&nbsp;下载
-						</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<!-- 发起问题 -->
-
-						<li class="dropdown" th:if="${session.user}!=null">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-lightbulb-o"></i>&nbsp;创造
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="/createArticle" th:href="@{/createArticle}">博客</a></li>
-								<li><a href="/publish">问题</a></li>
-								<li><a href="/learnInfo/video">视频</a></li>
-								<li><a href="/learnInfo/book">书籍</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">项目</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="/qiniu/file">资源</a></li>
-								<li><a href="#">工具</a></li>
-							</ul>
-						</li>
-
-						<!-- 填写: 请求用户的Github 身份  -->
-						<!-- 用户登录: 显示个人下拉菜单 -->
-						<li class="dropdown" th:if="${session.user} != null">
-							<div class="user-info dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-								<img class="img-circle user-avatar"  id="user-avatar"  src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1792571644,218025841&fm=26&gp=0.jpg" alt="">
-								<div class="userbar-content">
-									<span th:text="${session.user.name}">温柔的心</span>
-								</div>
-								<span class="caret"></span>
-							</div>
-							<ul class="dropdown-menu">
-								<li><a href="#" th:href="@{/profile/personal}">个人主页</a></li>
-								<li><a href="/profile/qustions" th:href="@{/profile/qustions}">文章中心</a></li>
-								<li><a href="#" th:href="@{/profile/messages}">消息通知</a></li>
-								<li><a href="#" th:href="@{/profile/collections}">我的收藏</a></li>
-								<li><a href="#" th:href="@{/profile/resrc-tools}">我的资源</a></li>
-
-								<li role="separator" class="divider"></li>
-								<li><a href="#" th:href="@{/sign-out}">退出登录</a></li>
-							</ul>
-						</li>
-						<!-- 用户未登录显示登录 按钮-->
-						<li th:if="${session.user} == null">
-							<!--href="https://github.com/login/oauth/authorize?client_id=ac68d213e55794a1f617&redirect_uri=http://localhost:8087/callback&state=1"-->
-							<a href="/login">
-								登录</a>
-						</li>
-
-					</ul>
+				<div class="user-option">
+					<div style="position: absolute;border-width:7px;
+                        border-style:solid;
+                        border-color:transparent transparent #ebebeb;
+                        top: -15px;
+                        left: 49px;"></div>
+					<a href="/createArticle">文章</a>
+					<a href="/publish">问题</a>
+					<a href="/qiniu/file">视频</a>
+					<a href="/qiniu/file">书籍</a>
+					<a href="/project/create">项目</a>
+					<a href="/tool/create">资源</a>
+					<script>
+                        var icon = document.querySelector(".user-icon");
+                        var option = document.querySelector(".user-option");
+                        icon.addEventListener('mouseover', function() {
+                            option.style.display = "block";
+                        })
+                        icon.addEventListener('mouseleave', function() {
+                            option.style.display = "none";
+                            option.addEventListener('mouseover', function() {
+                                option.style.display = "block";
+                            })
+                        })
+                        option.addEventListener('mouseleave', function() {
+                            option.style.display = "none";
+                        })
+					</script>
 				</div>
+			</div>
+			<!-- 个人信息 -->
+			 <div class="user-box2"  th:if="${session.user}!=null">
+				<div class="user-icon2 top-quote  mt-lg-0">
+					<a href="">
+						<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1792571644,218025841&fm=26&gp=0.jpg"
+							 alt="" width="32" height="30" style="border-radius: 16px;">
+					</a>
+				</div>
+				<div class="user-option2">
+					<div style="position: absolute;border-width:7px;
+					border-style:solid;
+					border-color:transparent transparent #ebebeb;
+					top: -15px;
+					left: 49px;"></div>
+					<a href="/profile/personal">个人中心</a>
+					<a href="/profile/message">消息通知</a>
+					<a href="" th:href="@{/sign-out}">退出登录</a>
+					<script>
+                        var icon2 = document.querySelector(".user-icon2");
+                        var option2 = document.querySelector(".user-option2");
+                        icon2.addEventListener('mouseover', function() {
+                            option2.style.display = "block";
+                        })
+                        icon2.addEventListener('mouseleave', function() {
+                            option2.style.display = "none";
+                            option2.addEventListener('mouseover', function() {
+                                option2.style.display = "block";
+                            })
+                        })
+                        option2.addEventListener('mouseleave', function() {
+                            option2.style.display = "none";
+                        })
+					</script>
+				</div>
+			</div>
+
+			<div class="top-quote mr-lg-3 mt-lg-0">
+				<a href="/login" class="btn btn-style transparent-btn" aria-disabled="true"  th:if="${session.user} ==null">登 录</a>
 			</div>
 		</nav>
 	</div>
+
+	<script>
+        var nav = document.querySelector(".nav-fixed");
+        window.onscroll = function() {
+            var topScroll = window.pageYOffset;
+            console.log(topScroll);
+            if (topScroll >= 200) {
+                nav.className = "nav-fixed fixed-top"
+            } else {
+                nav.className = "nav-fixed"
+            }
+        }
+	</script>
+</header>
 </body>
 </html>

@@ -73,6 +73,7 @@ public class QiniuController {
 			//构造视频对象
 			System.out.println("视频");
 			msg = videoService.insertVideo(request, fileInfo);
+
 		}
 		//将视频或者书籍url 放入model
 		return "msg" ;

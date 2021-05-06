@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>问题详情</title>
+    <link rel="stylesheet" type="text/css" href="/css/question.css" />
+
+    <!-- 导航栏 -->
+    <link rel="stylesheet" href="/css/navcss/nav.css">
+    <link rel="stylesheet" href="/css/book-video/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/article/css/style.css">
+
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script src="/css/myCSS/single.js"></script>
+    <link rel="stylesheet" href="/css/myCSS/single.css">
+
+
+</head>
+
+<body>
+
+    <!-- 公共: 导航条 -->
+    <div th:insert="~{navigation :: header-nav}"></div>
+
+    <div id="main">
+        <div id="content_header"></div>
+        <div id="site_content" style="width: 100%">
+            <div id="sidebar_container" style="margin-right: 353px;">
+                <div class="sidebar">
+                    <div class="sidebar_top"></div>
+                    <div class="sidebar_item">
+                        <!-- insert your sidebar items here -->
+                        <h3>Latest News</h3>
+                        <h4>New Website Launched</h4>
+                        <h5>January 1st, 2010</h5>
+                        <p>2010 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
+                    </div>
+                    <div class="sidebar_base"></div>
+                </div>
+                <div class="sidebar">
+                    <div class="sidebar_top"></div>
+                    <div class="sidebar_item">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li><a href="#">link 1</a></li>
+                            <li><a href="#">link 2</a></li>
+                            <li><a href="#">link 3</a></li>
+                            <li><a href="#">link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar_base"></div>
+                </div>
+            </div>
+
+
+            <!-- 内容 -->
+            <div id="content" style="margin-left: 206px;width: 1000px">
+                <!-- insert the page content here -->
+                <h1 th:text="${questionDetail.title}" style="font-size:60px">A Page</h1>
+                <p th:text="${questionDetail.description}"></p>
+            </div>
+        </div>
+    </div>
+    <!-- 评论系统： -->
+    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" id="vcomments" style="
+    width: 1036px;
+    margin-left: 196px;
+    margin-top: 52px;"></div>
+    <!-- 网页脚步 -->
+    <div th:insert="~{common :: footer-nav}"></div>
+
+</body>
+<!-- 评论系统： -->
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zb1717nlMvXfvuxvBen0hWHT-gzGzoHsz',
+        appKey: 'gNubzg6p4i991tqHNsg5BQlt'
+    })
+</script>
+</html>

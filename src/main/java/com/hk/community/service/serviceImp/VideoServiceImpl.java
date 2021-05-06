@@ -1,5 +1,6 @@
 package com.hk.community.service.serviceImp;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,6 +10,7 @@ import com.hk.community.mapper.UserMapper;
 import com.hk.community.mapper.VideoMapper;
 import com.hk.community.model.User;
 import com.hk.community.model.Video;
+import com.hk.community.model.VideoResource;
 import com.hk.community.model.VideoType;
 import com.hk.community.service.VideoService;
 import org.springframework.beans.BeanUtils;
@@ -33,6 +35,8 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 	VideoResourceServiceImpl videoResourceService ;
 	@Autowired
 	VideoTypeServiceImpl videoTypeService ;
+	@Autowired
+	UserServiceImp userServiceImp ;
 
 	@Override
 	public String insertVideo(HttpServletRequest request, Map fileInfo) {
@@ -50,6 +54,8 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		//视频封面
 		final String cover = urls.get(urls.size() - 1);
 		final User user = (User)request.getSession().getAttribute("user");
+		//urls 第一个链接为 视频第一集
+		final String res = urls.get(0);
 
 
 		Video video = new Video();
@@ -59,10 +65,14 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		video.setVideoName(videoName);
 		video.setTarget(target);
 		video.setKeywords(keywords);
-		video.setCreator_id(user.getId());
+		if (user.getId()==null){
+			user.setId(1);
+		}
+		video.setCreatorId(user.getId());
 		//1： 发布， 0. 审核
 		video.setVideoStatus(1);
 		video.setVideoCover(cover);
+		video.setVideoResource(res);
 		video.setPublishedTime(new Date());
 		video.setModifiedTime(video.getPublishedTime());
 
@@ -95,7 +105,7 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		// 要点!! 分页返回的对象与传入的对象是同一个
 
 		//第一个参数 current: 当前分页 ; 第二个参数size : 每页显示条数
-		Page<Video> videoIPage = videoMapper.selectPage(new Page<Video>(state, 9), null);
+		Page<Video> videoIPage = videoMapper.selectPage(new Page<Video>(state, 12), null);
 		VideoPaginationDTO videoPaginationDTO = new VideoPaginationDTO(videoIPage);
 		//对每一个questionIPage 中的元素进行处理
 		List<Video> videoIPageRecords = videoIPage.getRecords();
@@ -103,7 +113,7 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		List<VideoDTO> videoDTOList = new LinkedList<>();
 		for (Video record : videoIPageRecords) {
 			VideoDTO videoDTO = new VideoDTO();
-			User user = userMapper.findById(record.getCreator_id());
+			User user = userMapper.findById(record.getCreatorId());
 			final VideoType type = videoTypeService.getById(record.getTypeId());
 			//获取资源地址
 			final List resource = videoResourceService.getByVideoId(record.getId());
@@ -116,5 +126,46 @@ public class VideoServiceImpl  extends ServiceImpl<VideoMapper, Video> implement
 		}
 		videoPaginationDTO.setVideoDTOS(videoDTOList);
 		return videoPaginationDTO;
+	}
+
+	/**
+	 * @Title: 返回视频的Urls 地址, 分集地址
+	 * @description:
+	 * @author: 31618
+	 * @date: 2021/4/29
+	 * @param :
+	 * @return:
+	 */
+	@Override
+	public List<VideoResource> videoUrls(Video video) {
+
+		QueryWrapper<VideoResource> queryWrapper = new QueryWrapper<>();
+		queryWrapper.select("video_resource");
+		queryWrapper.eq("video_id", video.getId());
+		final List<VideoResource> videoResources = videoResourceService.list(queryWrapper);
+		return videoResources;
+	}
+
+	@Override
+	public VideoDTO getVideoContent(Integer videoId) {
+
+		Video video = videoMapper.selectById(videoId);
+		VideoDTO videoDTO = new VideoDTO();
+		BeanUtils.copyProperties(video, videoDTO);
+		//设置上传用户
+		videoDTO.setCreator(userServiceImp.getById(video.getCreatorId()));
+		//获取视频Urls 地址
+		QueryWrapper<VideoResource> queryWrapper = new QueryWrapper<>();
+		queryWrapper.select("video_resource");
+		queryWrapper.eq("video_id", video.getId());
+		List<VideoResource> videoResources = videoResourceService.list(queryWrapper);
+		//设置视频链接
+		ArrayList<String> urls = new ArrayList<>();
+		for (VideoResource videoResource : videoResources) {
+			urls.add(videoResource.getVideoResource());
+		}
+		videoDTO.setResourceUrls(urls);
+		return videoDTO ;
+
 	}
 }

@@ -18,7 +18,7 @@ public class VideoDTO {
     private String keywords;    //视频关键字
     private VideoType type;     //视频分类id
     private String videoResource;   //视频资源地址
-    private List resourceUrls ;
+    private List<String> resourceUrls ;
     private String videoCover ;     //视频封面
     private String videoLogo = "http://qrqtwjukj.hn-bkt.clouddn.com/e5f4405df449d8a41412feb30bb92e30.jpg";
     private Integer copyright;      //原创?转载

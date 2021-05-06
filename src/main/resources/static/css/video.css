@@ -1,0 +1,542 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.video-w {
+    max-width: 1984px;
+    min-width: 988px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 0 68px;
+}
+
+
+/* 视频题目 */
+.video-w .v-title-box {
+    height: 96px;
+    padding-top: 27px;
+    box-sizing: border-box;
+}
+
+.v-title-box .v-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #212121;
+    line-height: 26px;
+    height: 26px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0;
+}
+
+.v-title-box .v-title .title {
+    vertical-align: middle;
+}
+
+.v-title-box .v-data {
+    font-size: 12px;
+    height: 16px;
+    color: #999;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.v-title-box .v-data .dm {
+    margin-right: 12px;
+}
+
+.v-title-box .v-data span {
+    display: inline-block;
+    height: 16px;
+}
+
+
+/* 视频 */
+
+.v-player {
+    height: auto;
+}
+
+
+/* 视频底边栏 */
+
+.ljhplay-footer {
+    position: relative;
+    margin-top: 16px;
+    line-height: 30px;
+    height: 41px;
+    font-size: 14px;
+    color: #505050;
+    border-bottom: 1px solid #e5e9f0;
+    padding-bottom: 12px;
+}
+
+.ljhplay-footer .ops {
+    float: left;
+    height: 24px;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ljhplay-footer .ops img {
+    width: 27px;
+    margin-bottom: 13px;
+}
+
+.ljhplay-footer .ops>span {
+    width: 92px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all .3s;
+    display: inline-block;
+    white-space: nowrap;
+    color: #505050;
+    position: relative;
+}
+
+.ljhplay-footer .right-btn {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+.ljhplay-footer .right-btn .not-btn {
+    border: 1px solid #fb7299;
+    color: #fb7299;
+    transition: .3s;
+    position: relative;
+    margin-right: 25px;
+    width: 71px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+/* tip */
+
+.v-edior {
+    position: relative;
+    margin-top: 16px;
+}
+
+.v-edior .copy-right {
+    margin-right: 20px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    color: #999;
+}
+
+.v-edior .up-tip {
+    height: auto;
+    white-space: pre-line;
+    transition: all .3s;
+    font-size: 12px;
+    color: #212121;
+    letter-spacing: 0;
+    line-height: 18px;
+    width: 573px;
+    overflow: hidden;
+}
+
+.tags-box {
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+}
+
+.tags-box .tags>li {
+    float: left;
+    margin: 0 5px;
+    border-radius: 1.25em;
+}
+
+.tags-box .tags>li>a {
+    border-radius: 1.25em;
+}
+
+
+/* 右侧边栏 */
+
+
+/* 用户信息 */
+
+.user {
+    box-sizing: border-box;
+    height: 96px;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    display: flex;
+}
+
+.user .user_img {
+    position: relative;
+    left: -8px;
+    float: left;
+    width: 48px;
+    height: 48px;
+}
+
+.user .user_img .up {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #f4f5f7;
+}
+
+.user .user_img .up .up_img_box {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.user .user_img .up .up_img_box .up_img {
+    border: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+/* 用户姓名 */
+
+.up_name {
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.message:hover {
+    color: #00a1d6;
+}
+
+.message {
+    margin-left: 12px;
+    font-size: 12px;
+    color: #505050;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.message i {
+    color: #999;
+    font-size: 16px;
+    margin-right: 4px;
+    height: 16px;
+    width: 16px;
+    vertical-align: text-bottom;
+}
+
+.des {
+    margin-top: 4px;
+    width: 256px;
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn_panel {
+    clear: both;
+    display: flex;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.btn_panel .good:hover {
+    background: #fb7299;
+    color: #fff;
+}
+
+.btn_panel .good {
+    border: 1px solid #fb7299;
+    width: 100px;
+    flex-shrink: 0;
+    margin: 0 10px 0 auto;
+    transition: all .3s;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 27px;
+    height: 27px;
+    border-radius: 2px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn_panel .follow:hover {
+    background: #00b5e5;
+    border-color: #00b5e5;
+}
+
+.btn_panel .follow {
+    width: 146px;
+    background: #00a1d6;
+    transition: all .3s;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 27px;
+    height: 27px;
+    border-radius: 2px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+
+/* 选集 */
+
+.right-box .page {
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #f4f4f4;
+    z-index: 1;
+}
+
+.right-box .page .head-con {
+    display: flex;
+    align-items: center;
+    color: #222;
+    padding: 10px 16px 0;
+    justify-content: space-between;
+}
+
+.head-con .head-left {
+    display: flex;
+    align-items: center;
+}
+
+.head-con .head-left h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.head-con .head-ledf .cur-page {
+    font-size: 12px;
+    color: #999;
+    line-height: 16px;
+}
+
+
+/* 连续播放按钮 */
+
+.next-btn {
+    font-size: 12px;
+    color: #999;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.next-btn .txt {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.next-btn .on {
+    border: 1px solid #00a1d6;
+    background: #00a1d6;
+}
+
+.next-btn .switch-btn {
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    outline: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color .2s, background-color .2s;
+    vertical-align: middle;
+}
+
+.next-btn .switch-btn::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 11px;
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+}
+
+
+/* 选集 */
+
+.page .cur_list {
+    padding: 4px 0;
+}
+
+.list_box {
+    padding: 0 6px;
+    max-height: 340px;
+    overflow: auto;
+}
+
+.page .cur_list .list_box li {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #6d757a;
+    margin: 5px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.page .cur_list .list_box li a {
+    color: #212121;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.page .cur_list .list_box .on {
+    background-color: #fff;
+}
+
+.list_content {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+}
+
+.list_content .content_text {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.list_content .content_text .list_num {
+    margin-right: 10px;
+}
+
+.list_content .content_text .part {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list_content .content_data {
+    font-size: 12px;
+    color: #757575;
+}
+
+
+/* 视频卡片 */
+
+.right-box .card {
+    display: flex;
+}
+
+.right-box .right-box-cards ul li {
+    margin: 10px 0;
+}
+
+.right-box .card .pic-box {
+    position: relative;
+    width: 141px;
+    height: 80px;
+    border-radius: 2px;
+    background: #f4f5f7;
+}
+
+.right-box .card .pic-box .pic {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    width: 141px;
+    height: 80px;
+}
+
+.right-box .card .pic-box .pic .pic-img {
+    width: 141px;
+    height: 80px;
+}
+
+.right-box .card .text-box {
+    margin-left: 10px;
+    flex: 1;
+    font-size: 0;
+}
+
+.right-box .card .text-box .title {
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #222;
+}
+
+.right-box .card .text-box .up-box {
+    width: 160px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.right-box .card .text-box .up-box a {
+    color: #999;
+}
+
+.right-box .card .text-box .count {
+    display: inline-block;
+    height: 16px;
+    width: 100%;
+    color: #999;
+    font-size: 12px;
+}

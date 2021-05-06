@@ -29,9 +29,9 @@ public class Book {
 	private int score ;         //评分
 	private String language ;
 	private int chapters ;
-	private Integer viewCount;
-	private Integer collectCount;
-	private Date createTime;
-	private Date modifiedTime;
+	private Integer view_count;
+	private Integer collect_count;
+	private Date create_time;
+	private Date modified_time;
 
 }

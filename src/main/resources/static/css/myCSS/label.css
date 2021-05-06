@@ -1,0 +1,11 @@
+.labelS {
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}

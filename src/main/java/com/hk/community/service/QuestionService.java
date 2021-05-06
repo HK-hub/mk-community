@@ -1,6 +1,7 @@
 package com.hk.community.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hk.community.dto.QuestionDTO;
 import com.hk.community.model.Question;
 
 /**
@@ -14,5 +15,5 @@ public interface QuestionService extends IService<Question> {
 
 //	List<QuestionDTO> selectUserPage(int state);
 
-
+	QuestionDTO getQuestion(int count) ;
 }

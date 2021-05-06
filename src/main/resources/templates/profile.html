@@ -1,88 +1,484 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" data-server-rendered="true" data-v-52866abc="">
+
 <head>
-	<meta charset="UTF-8">
-	<title>码客-个人中心</title>
-	<!-- 引入BootStrap 样式和JS支持 : 注意静态资源文件的模板引擎写法 -->
-	<link rel="stylesheet" th:href="${'/css/bootstrap.min.css'}" href="/css/bootstrap.min.css"/>
-	<link rel="stylesheet" th:href="${'/css/bootstrap-theme.min.css'}" href="css/bootstrap-theme.min.css"/>
-	<!-- 引入自定义 CSS 样式-->
-	<link rel="stylesheet"  th:href="${'/css/community.css'}" href="css/community.css">
-	<!-- 引入自定义 JS -->
-	<script th:src="${'/js/community-js/community_js.js'}" src="/js/community-js/community_js.js"></script>
-	<!-- JQuery 的引入要在 BootStrap 的JS 之前-->
-	<script src="/js/jquery-3.5.1/jquery-3.5.1.min.js" th:src="${'/js/jquery-3.5.1/jquery-3.5.1.min.js'}" type="application/javascript"></script>
-	<script th:src="${'/js/bootstrap.min.js'}" type="application/javascript" href="/js/bootstrap.min.js"></script>
-	<!-- 图标 -->
-	<link rel="shortcut icon" th:href="${'/img/favicon.ico'}" href="/img/favicon.ico" type="image/x-icon" />
-	<!--制作的图标，使用href关联，仅仅需要更改href的内容  -->
-	<!-- 引入Font Awesome 图标-->
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <title>HK_HH的博客</title>
+    <!---->
+    <!---->
+    <script src="https://g.csdnimg.cn/tingyun/1.8.5/user.js"></script>
+    <!---->
+    <script src="https://g.csdnimg.cn/??lib/jquery/1.12.4/jquery.min.js,user-tooltip/2.2/user-tooltip.js,lib/qrcode/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://g.csdnimg.cn/user-tooltip/2.2/user-tooltip.css">
+    <script src="//g.csdnimg.cn/common/csdn-report/report.js" type="text/javascript"></script>
+    <!---->
+    <link rel="stylesheet" href="/css/common.ef9f4893.css">
+    <link rel="stylesheet" href="/css/index.698b4ce1.css">
+    <link rel="stylesheet" type="text/css" href="//g.csdnimg.cn/user-medal/1.0.6/user-medal.css">
+    <script type="text/javascript" src="https://csdnimg.cn/search/baidu_opensug-1.0.1.js"></script>
 </head>
+
 <body>
-	<!-- 公共: 导航条 -->
-	<div th:insert="~{navigation :: header-nav}"></div>
+<div id="app" data-v-52866abc="">
+    <div>
+        <div class="main">
+            <div class="page-container page-component">
+                <div data-v-52866abc="">
+                    <div class="home_wrap" data-v-52866abc="">
+                        <div id="floor-user-profile_485" class="grey-bg" data-v-c9883966="" data-v-52866abc="">
+                            <div comp-data="[object Object]" floor-data="[object Object]" data-v-80922f46="" data-v-c9883966="">
+                                <div class="user-profile-head" data-v-d1dbb6f8="" data-v-80922f46="">
+                                    <div class="user-profile-head-banner" style="background-image:url(https://img-home.csdnimg.cn/images/20210120054229.jpg);" data-v-d1dbb6f8="">
+                                        <div class="user-profile-wrapper" data-v-d1dbb6f8="">
+                                            <h1 class="user-profile-title" style="color:#fff;" data-v-d1dbb6f8="">HK_HH的博客</h1>
+                                            <div class="user-profile-sub-title" style="color:#fff;" data-v-d1dbb6f8=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="user-profile-head-info user-profile-wrapper" data-v-d1dbb6f8="">
+                                        <div class="user-profile-head-info-t clearfix" data-v-d1dbb6f8="">
+                                            <!---->
+                                            <div class="user-profile-avatar" data-v-d1dbb6f8="">
+                                                <img src="https://profile.csdnimg.cn/9/1/0/1_hk_hh" alt="" data-v-d1dbb6f8="">
+                                                <i class="user-gender-male" data-v-d1dbb6f8=""></i>
+                                            </div>
+                                            <div class="user-profile-operate-btn" data-v-d1dbb6f8="">
+                                                <a href="javascript:;" data-report-click="{&quot;spm&quot;:&quot;3001.5706&quot;}" class="user-profile-black-btn el-popover__reference" data-v-d1dbb6f8="" aria-describedby="el-popover-3851" tabindex="0">退出登录</a>
+                                                <a href="https://i.csdn.net/#/user-center/profile" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5516&quot;}" data-report-query="spm=3001.5516" class="user-profile-red-btn" data-v-d1dbb6f8="">编辑资料</a>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div class="user-profile-head-info-m" data-v-d1dbb6f8="">
+                                            <div class="user-profile-head-name" data-v-d1dbb6f8="">
+                                                <div data-v-d1dbb6f8="">HK_HH</div>
+                                                <div title="已加入 CSDN 1年" class="person-code-age" style="background-color:#D1DDF1;color:#455165;" data-v-d1dbb6f8=""><img src="https://img-home.csdnimg.cn/images/20210108035944.gif" alt="" data-v-d1dbb6f8=""> <span data-v-d1dbb6f8="">码龄1年</span></div>
+                                                <div class="user-profile-icon" data-v-d1dbb6f8="">
+                                                    <a href="https://blog.csdn.net/blogdevteam/article/details/103478461" target="_blank" data-v-d1dbb6f8=""><img src="https://csdnimg.cn/identity/blog2.png" alt="" title="博客等级" data-v-d1dbb6f8=""></a>
+                                                    <a href="https://www.csdn.net/vip" target="_blank" data-v-d1dbb6f8="">
+                                                        <!---->
+                                                    </a>
+                                                    <a href="https://i.csdn.net/#/user-center/auth" target="_blank" data-v-d1dbb6f8="">
+                                                        <!---->
+                                                    </a>
+                                                    <a href="https://i.csdn.net/#/user-center/auth" target="_blank" data-v-d1dbb6f8="">
+                                                        <!---->
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!---->
+                                        </div>
+                                        <div class="user-profile-head-info-b" data-v-d1dbb6f8="">
+                                            <ul data-v-d1dbb6f8="">
+                                                <li data-v-d1dbb6f8="">
+                                                    <div class="user-profile-statistics-num" data-v-d1dbb6f8="">4,471</div>
+                                                    <div class="user-profile-statistics-name" data-v-d1dbb6f8="">被访问量</div>
+                                                </li>
+                                                <li data-v-d1dbb6f8="">
+                                                    <a href="javascript:;" data-v-d1dbb6f8="">
+                                                        <div class="user-profile-statistics-num" data-v-d1dbb6f8="">16</div>
+                                                        <div class="user-profile-statistics-name" data-v-d1dbb6f8="">原创文章</div>
+                                                    </a>
+                                                </li>
+                                                <li data-v-d1dbb6f8="">
+                                                    <a href="https://blog.csdn.net/rank/list/total" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5476&quot;}" data-report-query="spm=3001.5476" data-v-d1dbb6f8="">
+                                                        <div class="user-profile-statistics-num" data-v-d1dbb6f8="">334,919</div>
+                                                        <div class="user-profile-statistics-name" data-v-d1dbb6f8="">作者排名</div>
+                                                    </a>
+                                                </li>
+                                                <li data-v-d1dbb6f8="">
+                                                    <a href="javascript:;" data-v-d1dbb6f8="">
+                                                        <div class="user-profile-statistics-num" data-v-d1dbb6f8="">11</div>
+                                                        <div class="user-profile-statistics-name" data-v-d1dbb6f8="">粉丝数量</div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-profile-body" data-v-3f0fdf46="" data-v-80922f46="">
+                                    <div class="user-profile-body-inner" data-v-3f0fdf46="">
+                                        <div class="user-profile-body-left" data-v-3f0fdf46="">
+                                            <div class="user-profile-aside" data-v-d487ed78="" data-v-3f0fdf46="" style="top: -871px;">
+                                                <div class="user-general-info single-general-info" data-v-d487ed78="">
+                                                    <ul data-v-d487ed78="">
+                                                        <!---->
+                                                        <!---->
+                                                        <li class="user-general-info-join-csdn" data-v-d487ed78=""><i data-v-d487ed78=""></i> <span data-v-d487ed78="">于</span> <span class="user-general-info-key-word" data-v-d487ed78="">2019-12-28</span> <span data-v-d487ed78="">加入CSDN</span></li>
+                                                    </ul>
+                                                </div>
+                                                <!---->
+                                                <div class="user-achievement user-profile-aside-common-box" data-v-d487ed78="">
+                                                    <div class="aside-common-box-head" data-v-d487ed78="">获得成就</div>
+                                                    <div class="aside-common-box-bottom" data-v-d487ed78="">
+                                                        <div class="aside-common-box-content" data-v-d487ed78="">
+                                                            <ul data-v-d487ed78="">
+                                                                <li data-v-d487ed78="">
+                                                                    <i style="background-image: url(https://img-home.csdnimg.cn/images/20210114022819.png)"></i>
+                                                                    <div>获得<span>27</span>次点赞</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <i style="background-image: url(https://img-home.csdnimg.cn/images/20210114022831.png)"></i>
+                                                                    <div>内容获得<span>16</span>次评论</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <i style="background-image: url(https://img-home.csdnimg.cn/images/20210114022828.png)"></i>
+                                                                    <div>获得<span>52</span>次收藏</div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="user-profile-medal user-profile-aside-common-box" data-v-d487ed78="">
+                                                    <div class="aside-common-box-head" data-v-d487ed78="">荣誉勋章</div>
+                                                    <div class="aside-common-box-bottom" data-v-d487ed78="">
+                                                        <div class="aside-common-box-content" data-v-d487ed78="">
+                                                            <ul data-v-d487ed78="">
+                                                                <li data-nickname="HK_HH" data-username="HK_HH" data-avatar="https://profile.csdnimg.cn/9/1/0/1_hk_hh" data-report-click="{&quot;spm&quot;:&quot;3001.5481&quot;}" class="csdn-user-medal-btn" data-v-d487ed78=""><img src="https://csdnimg.cn/medal/qiandao5@240.png" alt="" data-v-d487ed78=""></li>
+                                                                <li data-nickname="HK_HH" data-username="HK_HH" data-avatar="https://profile.csdnimg.cn/9/1/0/1_hk_hh" data-report-click="{&quot;spm&quot;:&quot;3001.5481&quot;}" class="csdn-user-medal-btn" data-v-d487ed78=""><img src="https://csdnimg.cn/medal/chizhiyiheng@240.png" alt="" data-v-d487ed78=""></li>
+                                                                <li data-nickname="HK_HH" data-username="HK_HH" data-avatar="https://profile.csdnimg.cn/9/1/0/1_hk_hh" data-report-click="{&quot;spm&quot;:&quot;3001.5481&quot;}" class="csdn-user-medal-btn" data-v-d487ed78=""><img src="https://csdnimg.cn/medal/qixiebiaobing2@240.png" alt="" data-v-d487ed78=""></li>
+                                                                <li data-nickname="HK_HH" data-username="HK_HH" data-avatar="https://profile.csdnimg.cn/9/1/0/1_hk_hh" data-report-click="{&quot;spm&quot;:&quot;3001.5481&quot;}" class="csdn-user-medal-btn" data-v-d487ed78=""><img src="https://csdnimg.cn/medal/fenxiangjingying@240.png" alt="" data-v-d487ed78=""></li>
+                                                            </ul>
+                                                        </div> <button data-nickname="HK_HH" data-username="HK_HH" data-avatar="https://profile.csdnimg.cn/9/1/0/1_hk_hh" data-report-click="{&quot;spm&quot;:&quot;3001.5481&quot;}" class="aside-common-box-bottom-btn csdn-user-medal-btn"
+                                                                       data-v-d487ed78="">所有勋章<i class="el-icon-arrow-right" data-v-d487ed78=""></i></button></div>
+                                                </div>
+                                                <div class="user-interest-area user-profile-aside-common-box" data-v-d487ed78="">
+                                                    <div class="aside-common-box-head" data-v-d487ed78="">兴趣领域</div>
+                                                    <div class="aside-common-box-bottom" data-v-d487ed78="">
+                                                        <div class="aside-common-box-content aside-box-fold" data-v-d487ed78="">
+                                                            <ul data-v-d487ed78="">
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#算法</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#排序算法</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#设计</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#UI/UX</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#测试</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#测试用例</span><span data-v-d487ed78="">#selenium</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#人工智能</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#Python</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#前端</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#前端框架</span><span data-v-d487ed78="">#XHTML</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#安全</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#系统安全</span><span data-v-d487ed78="">#web安全</span></div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <div class="interest-area-main" data-v-d487ed78="">
+                                                                        <div class="interest-area-name" data-v-d487ed78="">#后端</div>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="interest-area-sub" data-v-d487ed78=""><span data-v-d487ed78="">#Go/GoLang</span><span data-v-d487ed78="">#Python</span><span data-v-d487ed78="">#架构</span><span data-v-d487ed78="">#Java</span><span data-v-d487ed78="">#PHP</span>
+                                                                        <span data-v-d487ed78="">#C/C++</span><span data-v-d487ed78="">#Linux</span></div>
+                                                                </li>
+                                                            </ul>
+                                                        </div> <button class="aside-common-box-bottom-btn" data-v-d487ed78="">展开<i class="el-icon-arrow-down" data-v-d487ed78=""></i></button></div>
+                                                </div>
+                                                <div class="user-special-column user-profile-aside-common-box" data-v-d487ed78="">
+                                                    <div class="aside-common-box-head" data-v-d487ed78="">TA的专栏</div>
+                                                    <div class="aside-common-box-bottom" data-v-d487ed78="">
+                                                        <div class="aside-common-box-content aside-box-fold" data-v-d487ed78="">
+                                                            <ul data-v-d487ed78="">
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10911316.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918140012416.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="Thymeleaf" data-v-d487ed78="">Thymeleaf</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">1篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10752347.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918135101160.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="SpringBoot" data-v-d487ed78="">SpringBoot</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">2篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10607114.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190927151124774.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="JavaWeb基础" data-v-d487ed78="">JavaWeb基础</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">3篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10720750.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918140145169.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="嵌入式" data-v-d487ed78="">嵌入式</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">1篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_9632909.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190927151101105.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="C语言入门" data-v-d487ed78="">C语言入门</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">4篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10623761.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918140012416.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="C++" data-v-d487ed78="">C++</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">4篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10620328.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918140037908.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="leetcode" data-v-d487ed78="">leetcode</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">3篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_10674371.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918140037908.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="groovy" data-v-d487ed78="">groovy</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">1篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_9980751.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/20190918135101160.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="Java FX配置" data-v-d487ed78="">Java FX配置</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">1篇</div>
+                                                                </li>
+                                                                <li data-v-d487ed78="">
+                                                                    <a href="https://blog.csdn.net/hk_hh/category_9980752.html" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" data-report-query="spm=3001.5482" class="special-column-name" data-v-d487ed78=""><img src="https://img-blog.csdnimg.cn/2019091813595558.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" data-v-d487ed78=""> <span title="IDEA配置Java FX" data-v-d487ed78="">IDEA配置Java FX</span>
+                                                                        <!---->
+                                                                    </a>
+                                                                    <div class="special-column-num" data-v-d487ed78="">1篇</div>
+                                                                </li>
+                                                            </ul>
+                                                        </div> <button data-report-click="{&quot;spm&quot;:&quot;3001.5482&quot;}" class="aside-common-box-bottom-btn" data-v-d487ed78="">展开<i class="el-icon-arrow-down" data-v-d487ed78=""></i></button></div>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div class="user-profile-body-right" data-v-3f0fdf46="">
+                                            <div class="navList-box" data-v-bb5f5e3e="" data-v-3f0fdf46="">
+                                                <div class="navList" data-v-bb5f5e3e="">
+                                                    <ul data-v-bb5f5e3e="">
+                                                        <li class="active" data-v-bb5f5e3e="">
+                                                            <!---->最近<span class="nav-li-num" data-v-bb5f5e3e=""></span></li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->文章·<span class="nav-li-num" data-v-bb5f5e3e="">16</span></li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->问题·<span class="nav-li-num" data-v-bb5f5e3e="">0</span></li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->视频·<span class="nav-li-num" data-v-bb5f5e3e="">0</span></li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->书籍·<span class="nav-li-num" data-v-bb5f5e3e="">0</span></li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->项目<span class="nav-li-num" data-v-bb5f5e3e=""></span>
+                                                        </li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->资源·<span class="nav-li-num" data-v-bb5f5e3e="">15</span>
+                                                        </li>
+                                                        <li data-v-bb5f5e3e="" class="">
+                                                            <!---->收藏<span class="nav-li-num" data-v-bb5f5e3e=""></span>
+                                                        </li>
 
-	<!-- 个人中心左侧，右侧列表-->
-	<div class="container-fluid main">
-		<div class="row">
-			<!-- MarkDown 文章编写div -->
-			<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-				<h2 th:text="${sectionName}"> <!-- 发起图标 -->
-					<i class="fa fa-list-alt"></i><span class="fa fa-book"></span> &nbsp;我的文章
-				</h2>
-				<hr>
-				<!-- 文章列表视图 : media  -->
-				<div th:if="${section}== 'questions'">
-					<div class="media" th:each="question : ${userQuestions.records}" >
-						<div class="media-body">
-							<h3 class="media-heading" th:text="${question.title}">Spring Data Jpa</h3>
-							<!-- 问题文章摘要 -->
-							<span class="question-summary" th:text="${question.description}">从SpringBoot自动装配/配置机制, Web层, 数据库层, 常用注解, 消息, 缓存, 分布式, 启动流程等深入源码进行分析</span><br>
-							<!-- 问题文章的特征描述: 文章标签, 作者, 浏览量, 喜欢, 评论数等 -->
-							<div class="question-feature-desc" >
-								<i class="fa fa-calendar-check-o"></i>&nbsp; <span th:text="${#dates.format(question.getCreate_time(), 'yyyy-MM-dd hh:mm:ss')}">2021 五月 20</span>&nbsp;
-								<i class="fa fa-tags"></i><span class="label label-success tags" th:text="${question.getTags()}">primary</span>
-								<i class="fa fa-commenting-o"></i>&nbsp;<span th:text="${question.getComment_count()}">0</span>
-								<i class="fa fa-eye"></i>&nbsp;<span th:text="${question.getView_count()}">0</span>
-							</div>
-						</div>
-						<hr>
-					</div>
-				</div>
+                                                    </ul>
+                                                    <div class="search-input" data-v-bb5f5e3e=""><input id="searchInput" type="text" placeholder="搜TA的内容" value="" data-v-bb5f5e3e="">
+                                                        <div class="search-btn" data-v-bb5f5e3e=""><img src="https://img-home.csdnimg.cn/images/20210127052220.png" alt="" class="search-img" data-v-bb5f5e3e=""> <img src="https://img-home.csdnimg.cn/images/20210127052218.png" alt="" class="search-hover-img"
+                                                                                                                                                                                                                       data-v-bb5f5e3e=""></div>
+                                                    </div>
+                                                    <div class="m-search-input" data-v-bb5f5e3e=""><input id="mSearchInput" type="text" placeholder="搜TA的内容" value="" data-v-bb5f5e3e="">
+                                                        <div class="m-search-btn" data-v-bb5f5e3e=""><img src="https://img-home.csdnimg.cn/images/20210127052220.png" alt="" class="m-search-img" data-v-bb5f5e3e=""> <img src="https://img-home.csdnimg.cn/images/20210127052218.png" alt="" class="m-search-hover-img"
+                                                                                                                                                                                                                           data-v-bb5f5e3e=""></div>
+                                                    </div>
+                                                </div>
+                                                <div data-v-bb5f5e3e="">
+                                                    <div data-v-0db42936="" data-v-bb5f5e3e="">
+                                                        <div data-v-0db42936="">
+                                                            <article class="blog-list-box" data-v-6fe2b6a7="" data-v-0db42936="">
+                                                                <a href="https://blog.csdn.net/HK_HH/article/details/115135477" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-6fe2b6a7="">
+                                                                    <div class="blog-list-box-top" data-v-6fe2b6a7="">
+                                                                        <h4 data-v-6fe2b6a7="">SprigBoot 默认整合Tymeleaf 时遇到的一个致命错误: Could not parse....</h4>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="blog-list-content" data-v-6fe2b6a7="">在整合SpringBoot 和Tymeleaf 模板引擎时遇到知名错误先来看错误:ERROR 12788 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet] Servlet.service() for servlet [dispatcherServlet] in context with
+                                                                        path [] threw exception [Request processing failed; nested exception i</div>
+                                                                    <div class="blog-list-footer" data-v-6fe2b6a7="">
+                                                                        <div class="blog-list-footer-left" data-v-6fe2b6a7="">
+                                                                            <div class="article-type article-type-yc" data-v-6fe2b6a7="">原创</div>
+                                                                            <!---->
+                                                                            <!---->
+                                                                            <div class="view-num-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051656.png" alt="" data-v-6fe2b6a7=""> <span class="view-num" data-v-6fe2b6a7="">52<span class="two-px" data-v-6fe2b6a7="">阅读</span></span>
+                                                                            </div>
+                                                                            <div class="comment-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051933.png" alt="" data-v-6fe2b6a7=""> <span class="comment-num" data-v-6fe2b6a7="">0<span class="two-px" data-v-6fe2b6a7="">评论</span></span>
+                                                                            </div>
+                                                                            <div class="give-like-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127052104.png" alt="" data-v-6fe2b6a7=""> <span class="give-like-num" data-v-6fe2b6a7="">0<span class="two-px" data-v-6fe2b6a7="">点赞</span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="blog-list-footer-right" data-v-6fe2b6a7=""><span data-v-6fe2b6a7="">发布</span><span class="message-type" data-v-6fe2b6a7="">博客</span><span data-v-6fe2b6a7="">于&nbsp;1 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </article>
+                                                        </div>
+                                                        <div data-v-0db42936="">
 
-				<!-- 分页按钮： 第二版启用 -->
-			</div>
+                                                            <div class="resources-list-box" data-v-1cf431f8="" data-v-0db42936="">
+                                                                <a href="https://download.csdn.net/download/HK_HH/15690640" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-1cf431f8="">
+                                                                    <h4 data-v-1cf431f8="">阿里P8 架构师整理Java学习笔记.pdf</h4>
+                                                                    <div class="resources-list-content" data-v-1cf431f8="">阿里P8 架构师整理Java学习笔记 , 499 页, 图文结合, 源码级分析</div>
+                                                                    <div class="resources-list-footer" data-v-1cf431f8="">
+                                                                        <div class="resources-list-footer-left" data-v-1cf431f8="">
+                                                                            <div class="res-download" data-v-1cf431f8=""><img src="https://img-home.csdnimg.cn/images/20210127052054.png" alt="" data-v-1cf431f8="">
+                                                                                <div class="res-download-text" data-v-1cf431f8="">pdf</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="resources-list-footer-right" data-v-1cf431f8=""><span data-v-1cf431f8="">发布</span><span class="message-type" data-v-1cf431f8="">资源</span><span data-v-1cf431f8="">于&nbsp;1 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-0db42936="">
+                                                            <article class="blog-list-box" data-v-6fe2b6a7="" data-v-0db42936="">
+                                                                <a href="https://blog.csdn.net/HK_HH/article/details/112851083" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-6fe2b6a7="">
+                                                                    <div class="blog-list-box-top" data-v-6fe2b6a7="">
+                                                                        <h4 data-v-6fe2b6a7="">Spring Boot2 官方参考文档 ——Application Properties 应用配置</h4>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="blog-list-content" data-v-6fe2b6a7="">Spring Boot2 官方参考文档 ——Application Properties 应用配置导读前言Common Application properties 一般配置1.Core Properties 核心配置2.Cache Properties 缓存配置3. Mail Properties 邮件配置4.JSON Properties JSON配置5.
+                                                                        Data Properties 数据配置6. Transaction Properties 事务配置7.Data Migration Propert</div>
+                                                                    <div class="blog-list-footer" data-v-6fe2b6a7="">
+                                                                        <div class="blog-list-footer-left" data-v-6fe2b6a7="">
+                                                                            <div class="article-type article-type-yc" data-v-6fe2b6a7="">原创</div>
+                                                                            <!---->
+                                                                            <!---->
+                                                                            <div class="view-num-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051656.png" alt="" data-v-6fe2b6a7=""> <span class="view-num" data-v-6fe2b6a7="">19<span class="two-px" data-v-6fe2b6a7="">阅读</span></span>
+                                                                            </div>
+                                                                            <div class="comment-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051933.png" alt="" data-v-6fe2b6a7=""> <span class="comment-num" data-v-6fe2b6a7="">0<span class="two-px" data-v-6fe2b6a7="">评论</span></span>
+                                                                            </div>
+                                                                            <div class="give-like-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127052104.png" alt="" data-v-6fe2b6a7=""> <span class="give-like-num" data-v-6fe2b6a7="">1<span class="two-px" data-v-6fe2b6a7="">点赞</span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="blog-list-footer-right" data-v-6fe2b6a7=""><span data-v-6fe2b6a7="">发布</span><span class="message-type" data-v-6fe2b6a7="">博客</span><span data-v-6fe2b6a7="">于&nbsp;3 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </article>
 
-			<!-- 侧边栏： 提示信息栏目-->
-			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<div class="list-group">
-					<a href="#" th:href="@{/profile/dynamic}" class="list-group-item" th:classappend="${section == 'dynamic'}?'active ':''">
-						<span class="fa fa-thermometer-4"></span>最新动态
-					</a>
-					<a href="#" th:href="@{/profile/repies}" class="list-group-item " th:classappend="${section == 'repies'}?'active ':'' + 'list-group-item'"><span class="badge">9</span>
-						<span class="fa fa-commenting"></span>消息通知
-					</a>
-					<a href="#" th:href="@{/profile/drafts}" class="list-group-item" th:classappend="${section == 'drafts'}?'active ':'' + 'list-group-item'"><span class="badge" >14</span>
-						<span class="fa fa-edit"></span>我的草稿
-					</a>
-					<a href="#" th:href="@{/profile/questions}" class="list-group-item" th:classappend="${section == 'questions'}? 'active ':'' + 'list-group-item'"><span class="badge">14</span>
-						<span class="fa fa-book"></span>我的文章
-					</a>
-					<a href="#" th:href="@{/profile/collections}" class="list-group-item" th:classappend="${section == 'collections'}? 'active ':'' + 'list-group-item'"><span class="badge">5</span>
-						<span class="fa fa-bookmark"></span>我的收藏
-					</a>
-					<a href="#" th:href="@{/profile/subscriptions}" class="list-group-item" th:classappend="${section == 'subscriptions'}? 'active ':''+ 'list-group-item'"><span class="badge">5</span>
-						<span class="fa fa-heart"></span>我的关注
-					</a>
-					<a href="#" th:href="@{/profile/resrc-tools}" class="list-group-item" th:classappend="${section == 'resrc-tools'}?'active ':'' + 'list-group-item'"><span class="badge">9</span>
-						<span class="fa fa-briefcase"></span>资源|工具
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+                                                        </div>
+                                                        <div data-v-0db42936="">
+                                                            <article class="blog-list-box" data-v-6fe2b6a7="" data-v-0db42936="">
+                                                                <a href="https://blog.csdn.net/HK_HH/article/details/112332934" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-6fe2b6a7="">
+                                                                    <div class="blog-list-box-top" data-v-6fe2b6a7="">
+                                                                        <h4 data-v-6fe2b6a7="">基于STC89C51单片机智能走迷宫小车的设计</h4>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="blog-list-content" data-v-6fe2b6a7="">基于STC89C51单片机智能走迷宫小车的设计摘要1、课程设计的目的及要求1.1 课程设计目的1.2课程设计要求2、题目分析2.1 功能分析2.2 性能需求分析2.3 算法分析3、系统设计3.1系统整体设计3.1.1系统介绍3.1.2 系统整体设计原理3.1.3系统总体架构3.1.4 系统主要模块3.2硬件设计3.2.1 硬件结构设计3.2.2 传感器组设计3.2.3
+                                                                        电机驱动电路设计3.3软件设计3.3.1 迷宫小车正常行走程序设计3.3.2 迷宫小车信息处理方法3.3.3 迷宫小车找终点程序设计3.3.</div>
+                                                                    <div class="blog-list-footer" data-v-6fe2b6a7="">
+                                                                        <div class="blog-list-footer-left" data-v-6fe2b6a7="">
+                                                                            <div class="article-type article-type-yc" data-v-6fe2b6a7="">原创</div>
+                                                                            <!---->
+                                                                            <!---->
+                                                                            <div class="view-num-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051656.png" alt="" data-v-6fe2b6a7=""> <span class="view-num" data-v-6fe2b6a7="">622<span class="two-px" data-v-6fe2b6a7="">阅读</span></span>
+                                                                            </div>
+                                                                            <div class="comment-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051933.png" alt="" data-v-6fe2b6a7=""> <span class="comment-num" data-v-6fe2b6a7="">4<span class="two-px" data-v-6fe2b6a7="">评论</span></span>
+                                                                            </div>
+                                                                            <div class="give-like-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127052104.png" alt="" data-v-6fe2b6a7=""> <span class="give-like-num" data-v-6fe2b6a7="">10<span class="two-px" data-v-6fe2b6a7="">点赞</span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="blog-list-footer-right" data-v-6fe2b6a7=""><span data-v-6fe2b6a7="">发布</span><span class="message-type" data-v-6fe2b6a7="">博客</span><span data-v-6fe2b6a7="">于&nbsp;3 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </article>
 
-</body>
+                                                        </div>
+                                                        <div data-v-0db42936="">
+
+                                                            <div class="resources-list-box" data-v-1cf431f8="" data-v-0db42936="">
+                                                                <a href="https://download.csdn.net/download/HK_HH/14041459" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-1cf431f8="">
+                                                                    <h4 data-v-1cf431f8="">基于STC89C51/52 的智能迷宫寻路小车课程设计文档报告及代码(超级详细,)</h4>
+                                                                    <div class="resources-list-content" data-v-1cf431f8="">基于STC89C51/52 的智能迷宫寻路小车课程设计文档报告及代码(超级详细,)</div>
+                                                                    <div class="resources-list-footer" data-v-1cf431f8="">
+                                                                        <div class="resources-list-footer-left" data-v-1cf431f8="">
+                                                                            <div class="res-download" data-v-1cf431f8=""><img src="https://img-home.csdnimg.cn/images/20210127052054.png" alt="" data-v-1cf431f8="">
+                                                                                <div class="res-download-text" data-v-1cf431f8="">doc</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="resources-list-footer-right" data-v-1cf431f8=""><span data-v-1cf431f8="">发布</span><span class="message-type" data-v-1cf431f8="">资源</span><span data-v-1cf431f8="">于&nbsp;3 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-0db42936="">
+
+                                                            <div class="resources-list-box" data-v-1cf431f8="" data-v-0db42936="">
+                                                                <a href="http://download.csdn.net/download/HK_HH/14041432" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-1cf431f8="">
+                                                                    <h4 data-v-1cf431f8="">基于STC89C51/52 智能迷宫寻路小车</h4>
+                                                                    <div class="resources-list-content" data-v-1cf431f8="">基于STC89C52/51RC, 51单片机的迷宫寻路小车, 单片机课程设计</div>
+                                                                    <div class="resources-list-footer" data-v-1cf431f8="">
+                                                                        <div class="resources-list-footer-left" data-v-1cf431f8="">
+                                                                            <div class="res-download" data-v-1cf431f8=""><img src="https://img-home.csdnimg.cn/images/20210127052054.png" alt="" data-v-1cf431f8="">
+                                                                                <div class="res-download-text" data-v-1cf431f8="">rar</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="resources-list-footer-right" data-v-1cf431f8=""><span data-v-1cf431f8="">发布</span><span class="message-type" data-v-1cf431f8="">资源</span><span data-v-1cf431f8="">于&nbsp;3 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-0db42936="">
+                                                            <article class="blog-list-box" data-v-6fe2b6a7="" data-v-0db42936="">
+                                                                <a href="https://blog.csdn.net/HK_HH/article/details/112277789" target="_blank" data-report-click="{&quot;spm&quot;:&quot;3001.5501&quot;}" data-report-query="spm=3001.5501" data-v-6fe2b6a7="">
+                                                                    <div class="blog-list-box-top" data-v-6fe2b6a7="">
+                                                                        <h4 data-v-6fe2b6a7="">Leetcode 每日一题 830.</h4>
+                                                                        <!---->
+                                                                    </div>
+                                                                    <div class="blog-list-content" data-v-6fe2b6a7="">830. 较大分组的位置在一个由小写字母构成的字符串 s中，包含由一些连续的相同字符所构成的分组。例如，在字符串 s = "abbxxxxzyy" 中，就含有 "a", "bb", "xxxx", "z" 和 "yy" 这样的一些分组。分组可以用区间[start, end] 表示，其中 start 和 end 分别表示该分组的起始和终止位置的下标。上例中的
+                                                                        "xxxx"分组用区间表示为 [3,6] 。我们称所有包含大于或等于三个连续字符的分组为 较大分组 。找到每一个 较大分组 的区间，按起始位置</div>
+                                                                    <div class="blog-list-footer" data-v-6fe2b6a7="">
+                                                                        <div class="blog-list-footer-left" data-v-6fe2b6a7="">
+                                                                            <div class="article-type article-type-yc" data-v-6fe2b6a7="">原创</div>
+                                                                            <!---->
+                                                                            <!---->
+                                                                            <div class="view-num-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051656.png" alt="" data-v-6fe2b6a7=""> <span class="view-num" data-v-6fe2b6a7="">13<span class="two-px" data-v-6fe2b6a7="">阅读</span></span>
+                                                                            </div>
+                                                                            <div class="comment-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127051933.png" alt="" data-v-6fe2b6a7=""> <span class="comment-num" data-v-6fe2b6a7="">0<span class="two-px" data-v-6fe2b6a7="">评论</span></span>
+                                                                            </div>
+                                                                            <div class="give-like-box" data-v-6fe2b6a7=""><img src="https://img-home.csdnimg.cn/images/20210127052104.png" alt="" data-v-6fe2b6a7=""> <span class="give-like-num" data-v-6fe2b6a7="">0<span class="two-px" data-v-6fe2b6a7="">点赞</span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="blog-list-footer-right" data-v-6fe2b6a7=""><span data-v-6fe2b6a7="">发布</span><span class="message-type" data-v-6fe2b6a7="">博客</span><span data-v-6fe2b6a7="">于&nbsp;3 月前</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </article>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <script type="text/javascript" src="https://g.csdnimg.cn/common/csdn-footer/csdn-footer.js" data-isfootertrack="false" defer=""></script>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="https://csdnimg.cn/release/cmsfe/public/js/runtime.5aafb0f2.js"></script>
+    <script type="text/javascript" src="https://csdnimg.cn/release/cmsfe/public/js/chunk/common.2750a17e.js"></script>
+    <script type="text/javascript" src="https://csdnimg.cn/release/cmsfe/public/js/chunk/tpl/user-profile/index.979092ae.js"></script>
+
 </html>

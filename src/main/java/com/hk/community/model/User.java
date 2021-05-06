@@ -26,9 +26,12 @@ public class User {
 	private String token ;
 	private Long create_time ;
 	private Long modified_time ;
+	private Integer subscription = 10;
 	//头像地址
 	private String avatar_url ;
 	private String bio = "a plain coder";
+
+
 
 
 }
