@@ -1,6 +1,5 @@
 package com.hk.community;
 
-import com.hk.community.model.Article;
 import com.hk.community.service.serviceImp.ArticleServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,9 +23,9 @@ public class ArticleTest {
 	@Test
 	public void contentTest(){
 
-		final Article serviceById = articleService.getById(1);
-		System.out.println(serviceById.getTitle());
-		System.out.println(serviceById.getContent());
+//		final Article serviceById = articleService.getById(1);
+//		System.out.println(serviceById.getTitle());
+//		System.out.println(serviceById.getContent());
 
 	}
 
